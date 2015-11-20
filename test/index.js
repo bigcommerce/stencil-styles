@@ -92,6 +92,53 @@ describe('Stencil-Styles Plugin', function () {
 
             done();
         });
+
+        describe('stencilNumber', function() {
+            var stencilNumber;
+
+            beforeEach(function(done) {
+                stencilNumber = stencilStyles.scssFunctions(settings)['stencilNumber($name, $unit: px)'];
+
+                done();
+            });
+
+            it('should return the expected number and unit value', function(done) {
+                var settingName = new Sass.types.String('google-font-size'),
+                    unit = new Sass.types.String('em');
+
+                expect(stencilNumber(settingName, unit).getValue()).to.equal(14);
+                expect(stencilNumber(settingName, unit).getUnit()).to.equal('em');
+
+                done();
+            });
+
+            it('should return 0 if passed a wrong setting name', function(done) {
+                var settingName = new Sass.types.String('wrong-setting'),
+                    unit = new Sass.types.String('px');
+
+                expect(stencilNumber(settingName, unit).getValue()).to.equal(0);
+
+                done();
+            });
+
+            it('should return 0 if passed a wrong setting value', function(done) {
+                var settingName = new Sass.types.String('google-font-wrong-size'),
+                    unit = new Sass.types.String('px');
+
+                expect(stencilNumber(settingName, unit).getValue()).to.equal(0);
+
+                done();
+            });
+
+            it('should return a Sass.types.Number', function(done) {
+                var settingName = new Sass.types.String('google-font-size'),
+                    unit = new Sass.types.String('px');
+
+                expect(stencilNumber(settingName, unit) instanceof Sass.types.Number).to.equal(true);
+
+                done();
+            });
+        });
     });
 
     describe('scssImporter()', function() {
