@@ -5,13 +5,14 @@ var _ = require('lodash'),
     Lab = require('lab'),
     sinon = require('sinon'),
     Sass = require('node-sass'),
-    StencilStyles = require('../lib/index.module'),
+    StencilStyles = require('../lib/styles'),
     lab = exports.lab = Lab.script(),
     afterEach = lab.afterEach,
     beforeEach = lab.beforeEach,
     describe = lab.experiment,
     expect = Code.expect,
     it = lab.it,
+    files,
     options,
     settings,
     stencilStyles;
@@ -19,15 +20,16 @@ var _ = require('lodash'),
 describe('Stencil-Styles Plugin', function () {
     beforeEach(function(done) {
         settings = require('./mocks/settings.json');
+        files = {
+            '/mock/path1.scss': 'color: #fff',
+            '/mock/path2.scss': 'color: #000'
+        };
         options = {
             autoprefixerOptions: {},
-            files: {
-                '/mock/path1.scss': 'color: #fff',
-                '/mock/path2.scss': 'color: #000'
-            },
             themeSettings: settings
         };
         stencilStyles = new StencilStyles(options);
+        stencilStyles.files = files;
 
         done();
     });
@@ -156,7 +158,7 @@ describe('Stencil-Styles Plugin', function () {
 
             expect(result).to.be.an.object();
             expect(result).to.include({ file: '/mock/path2.scss' });
-            expect(result).to.include({ contents: options.files['/mock/path2.scss'] });
+            expect(result).to.include({ contents: files['/mock/path2.scss'] });
 
             done();
         });
