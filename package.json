@@ -4,7 +4,8 @@
   "description": "Compiles SCSS for the Stencil Framework",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab -t 75 -e 'development'",
+    "test-cov-html": "lab -r html -o coverage.html"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,10 @@
     "less": "^2.5.1",
     "lodash": "^3.10.0",
     "node-sass": "3.3.3"
+  },
+  "devDependencies": {
+    "code": "^1.4.0",
+    "lab": "^5.5.1",
+    "sinon": "^1.14.1"
   }
 }
