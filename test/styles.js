@@ -40,12 +40,6 @@ describe('Stencil-Styles Plugin', function () {
 
             done();
         });
-
-        it('should set the options object with defaults', function(done) {
-            expect(stencilStyles.options).to.not.be.empty();
-
-            done();
-        });
     });
 
     describe('compileCss()', function() {

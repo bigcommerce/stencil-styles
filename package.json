@@ -21,8 +21,8 @@
     "autoprefixer-core": "^5.2.1",
     "hoek": "^2.14.0",
     "less": "^2.5.1",
-    "lodash": "^3.10.0",
-    "node-sass": "3.3.3"
+    "lodash": "^3.10.1",
+    "node-sass": "^3.4.2"
   },
   "devDependencies": {
     "code": "^1.4.0",
