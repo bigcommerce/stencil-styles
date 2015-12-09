@@ -1,6 +1,6 @@
 {
-  "bad-font": "Nonexistent_Open+Sans:400",
-  "google-font": "Google_Open+Sans:400",
+  "native-font": "Times New Roman_400",
+  "google-font": "Google_Open+Sans_400",
   "google-font-size": 14,
   "google-font-wrong-size": "Not a Number"
 }

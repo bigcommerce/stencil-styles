@@ -161,6 +161,7 @@ describe('Stencil-Styles Plugin', function () {
     describe('stencilFont()', function() {
         beforeEach(function(done) {
             sinon.spy(stencilStyles, 'googleFontParser');
+            sinon.spy(stencilStyles, 'defaultFontParser');
 
             done();
         });
@@ -173,14 +174,77 @@ describe('Stencil-Styles Plugin', function () {
             done();
         });
 
-        it('should return Sass.NULL if the provider is not supported', function(done) {
-            expect(stencilStyles.stencilFont(settings['bad-font'], 'family')).to.equal(Sass.NULL);
+        it('should call the default parser if provider is not detected', function(done) {
+            stencilStyles.stencilFont(settings['native-font'], 'family');
+
+            expect(stencilStyles.defaultFontParser.calledOnce).to.equal(true);
 
             done();
         });
 
         afterEach(function(done) {
             stencilStyles.googleFontParser.restore();
+            stencilStyles.defaultFontParser.restore();
+
+            done();
+        });
+    });
+
+    describe('googleFontParser()', function() {
+        beforeEach(function(done) {
+            sinon.spy(stencilStyles, 'defaultFontParser');
+
+            done();
+        });
+
+        var googleFont = 'Google_Open+Sans_400';
+
+        it('should remove the Google_ from the value and call defaultParser', function(done) {
+            stencilStyles.googleFontParser(googleFont, 'family');
+
+            expect(stencilStyles.defaultFontParser.calledWith('Open+Sans_400', 'family')).to.equal(true);
+
+            done();
+        });
+
+        afterEach(function(done) {
+            stencilStyles.defaultFontParser.restore();
+
+            done();
+        });
+    });
+
+    describe('defaultFontParser()', function() {
+        var nativeFont = 'Times New Roman_400';
+
+        it('should return the font family name', function(done) {
+            var result = stencilStyles.defaultFontParser(nativeFont, 'family');
+
+            expect(result.getValue()).to.equal('Times New Roman');
+
+            done();
+        });
+
+        it('should return the font weight', function(done) {
+            var result = stencilStyles.defaultFontParser(nativeFont, 'weight');
+
+            expect(result.getValue()).to.equal('400');
+
+            done();
+        });
+
+        it('should return the first font weight if multiple are defined', function(done) {
+            var result = stencilStyles.defaultFontParser('Times New Roman_400,700,800', 'weight');
+
+            expect(result.getValue()).to.equal('400');
+
+            done();
+        });
+
+        it('should return a typeof Sass.NULL if family / weight is empty', function(done) {
+            var result = stencilStyles.defaultFontParser(undefined, 'family');
+
+            expect(result instanceof Sass.types.Null).to.equal(true);
 
             done();
         });
