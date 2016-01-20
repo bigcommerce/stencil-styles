@@ -220,7 +220,7 @@ describe('Stencil-Styles Plugin', function () {
         it('should return the font family name', function(done) {
             var result = stencilStyles.defaultFontParser(nativeFont, 'family');
 
-            expect(result.getValue()).to.equal('Times New Roman');
+            expect(result.getValue()).to.equal('"Times New Roman"');
 
             done();
         });
