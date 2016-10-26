@@ -82,6 +82,7 @@ describe('Stencil-Styles Plugin', function () {
                 'stencilNumber($name, $unit: px)',
                 'stencilColor($name)',
                 'stencilString($name)',
+                'stencilImage($image, $size)',
                 'stencilFontFamily($name)',
                 'stencilFontWeight($name)'
             ]);
@@ -131,6 +132,61 @@ describe('Stencil-Styles Plugin', function () {
                     unit = new Sass.types.String('px');
 
                 expect(stencilNumber(settingName, unit) instanceof Sass.types.Number).to.equal(true);
+
+                done();
+            });
+        });
+
+        describe('stencilImage', function() {
+            var stencilImage;
+
+            beforeEach(function(done) {
+                stencilImage = stencilStyles.scssFunctions(settings)['stencilImage($image, $size)'];
+
+                done();
+            });
+
+            it('should return the expected string value', function(done) {
+                var image = new Sass.types.String('img-url'),
+                    size = new Sass.types.String('img-size');
+
+                expect(stencilImage(image, size).getValue()).to.equal('stencil/1000x400/example.jpg');
+
+                done();
+            });
+
+            it('should return null if passed an empty image url value', function(done) {
+                var image = new Sass.types.String('img-url-empty'),
+                    size = new Sass.types.String('img-size');
+
+                expect(stencilImage(image, size)).to.equal(Sass.NULL);
+
+                done();
+            });
+
+            it('should return null if passed a wrong image url value', function(done) {
+                var image = new Sass.types.String('img-url-wrong--format'),
+                    size = new Sass.types.String('img-size');
+
+                expect(stencilImage(image, size)).to.equal(Sass.NULL);
+
+                done();
+            });
+
+            it('should return null if passed a wrong image dimension value', function(done) {
+                var image = new Sass.types.String('img-url'),
+                    size = new Sass.types.String('img-size-wrong--format');
+
+                expect(stencilImage(image, size)).to.equal(Sass.NULL);
+
+                done();
+            });
+
+            it('should return a Sass.types.String', function(done) {
+                var image = new Sass.types.String('img-url'),
+                    size = new Sass.types.String('img-size');
+
+                expect(stencilImage(image, size) instanceof Sass.types.String).to.equal(true);
 
                 done();
             });
