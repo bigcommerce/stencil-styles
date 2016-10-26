@@ -2,5 +2,10 @@
   "native-font": "Times New Roman_400",
   "google-font": "Google_Open+Sans_400",
   "google-font-size": 14,
-  "google-font-wrong-size": "Not a Number"
+  "google-font-wrong-size": "Not a Number",
+  "img-url": "stencil/{:size}/example.jpg",
+  "img-url-empty": "",
+  "img-url-wrong--format": "stencil/example.jpg",
+  "img-size": "1000x400",
+  "img-size-wrong--format": "1000400"
 }
