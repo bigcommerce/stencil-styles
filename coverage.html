@@ -540,27 +540,33 @@
         <li><a href="#tests">Test Report</a></li>
         <li><a href="#coverage">Coverage Report</a></li>
         <li>
-            <span class="cov medium">74.14</span>
-            <a href="#lib/index.module.js"><span class="dirname">lib/</span><span class="basename">index.module.js</span></a>
+            <span class="cov high">86.01</span>
+            <a href="#lib/styles.js"><span class="dirname">lib/</span><span class="basename">styles.js</span></a>
         </li>
         <li><a href="#linting">Linting Report</a></li>
     </div>
     <div id="tests">
       <h1>Test Report</h1>
-      <div class="stats terrible">
-          <div class="failures">1</div>
+      <div class="stats high">
+          <div class="failures">0</div>
           <div class="skipped">0</div>
-          <div class="test-count">6</div>
-          <div class="duration">21</div>
+          <div class="test-count">22</div>
+          <div class="duration">42</div>
       </div>
       <div id="filters">
           <input type="checkbox" checked="" onchange="filter(this)" value="success" id="show-success"><label for="show-success">Show Success</label></input>
           <input type="checkbox" checked="" onchange="filter(this)" value="failure" id="show-failure"><label for="show-failure">Show Failure</label></input>
           <br>
           <input type="checkbox" checked="" onchange="filter(this)" value="Stencil-Styles_Plugin" id="show-Stencil-Styles_Plugin"><label for="show-Stencil-Styles_Plugin">Stencil-Styles Plugin</label></input>
+          <input type="checkbox" checked="" onchange="filter(this)" value="constructor" id="show-constructor"><label for="show-constructor">constructor</label></input>
           <input type="checkbox" checked="" onchange="filter(this)" value="compileCss()" id="show-compileCss()"><label for="show-compileCss()">compileCss()</label></input>
+          <input type="checkbox" checked="" onchange="filter(this)" value="scssFunctions" id="show-scssFunctions"><label for="show-scssFunctions">scssFunctions</label></input>
+          <input type="checkbox" checked="" onchange="filter(this)" value="stencilNumber" id="show-stencilNumber"><label for="show-stencilNumber">stencilNumber</label></input>
+          <input type="checkbox" checked="" onchange="filter(this)" value="stencilImage" id="show-stencilImage"><label for="show-stencilImage">stencilImage</label></input>
           <input type="checkbox" checked="" onchange="filter(this)" value="scssImporter()" id="show-scssImporter()"><label for="show-scssImporter()">scssImporter()</label></input>
           <input type="checkbox" checked="" onchange="filter(this)" value="stencilFont()" id="show-stencilFont()"><label for="show-stencilFont()">stencilFont()</label></input>
+          <input type="checkbox" checked="" onchange="filter(this)" value="googleFontParser()" id="show-googleFontParser()"><label for="show-googleFontParser()">googleFontParser()</label></input>
+          <input type="checkbox" checked="" onchange="filter(this)" value="defaultFontParser()" id="show-defaultFontParser()"><label for="show-defaultFontParser()">defaultFontParser()</label></input>
       </div>
       <table>
           <thead>
@@ -571,48 +577,156 @@
           </tr>
           </thead>
           <tbody>
-          <tr class="show Stencil-Styles_Plugin compileCss() success">
+          <tr class="show Stencil-Styles_Plugin constructor success">
               <td class="test-id">1</td>
+              <td class="test-title">Stencil-Styles Plugin constructor should set the fullUrls object to empty
+                  
+              </td>
+              <td class="test-duration">2</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin compileCss() success">
+              <td class="test-id">2</td>
               <td class="test-title">Stencil-Styles Plugin compileCss() should call the scss compiler based on the compiler parameter
+                  
+              </td>
+              <td class="test-duration">1</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin compileCss() success">
+              <td class="test-id">3</td>
+              <td class="test-title">Stencil-Styles Plugin compileCss() should call the callback passed in once compilation is complete
+                  
+              </td>
+              <td class="test-duration">1</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions success">
+              <td class="test-id">4</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions should return an array with all required functions
+                  
+              </td>
+              <td class="test-duration">2</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilNumber success">
+              <td class="test-id">5</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilNumber should return the expected number and unit value
+                  
+              </td>
+              <td class="test-duration">1</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilNumber success">
+              <td class="test-id">6</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilNumber should return 0 if passed a wrong setting name
+                  
+              </td>
+              <td class="test-duration">1</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilNumber success">
+              <td class="test-id">7</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilNumber should return 0 if passed a wrong setting value
                   
               </td>
               <td class="test-duration">0</td>
           </tr>
-          <tr class="show Stencil-Styles_Plugin compileCss() success">
-              <td class="test-id">2</td>
-              <td class="test-title">Stencil-Styles Plugin compileCss() should call the callback passed in once compilation is complete
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilNumber success">
+              <td class="test-id">8</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilNumber should return a Sass.types.Number
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilImage success">
+              <td class="test-id">9</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilImage should return the expected string value
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilImage success">
+              <td class="test-id">10</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilImage should return null if passed an empty image url value
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilImage success">
+              <td class="test-id">11</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilImage should return null if passed a wrong image url value
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilImage success">
+              <td class="test-id">12</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilImage should return null if passed a wrong image dimension value
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin scssFunctions stencilImage success">
+              <td class="test-id">13</td>
+              <td class="test-title">Stencil-Styles Plugin scssFunctions stencilImage should return a Sass.types.String
                   
               </td>
               <td class="test-duration">0</td>
           </tr>
           <tr class="show Stencil-Styles_Plugin scssImporter() success">
-              <td class="test-id">3</td>
+              <td class="test-id">14</td>
               <td class="test-title">Stencil-Styles Plugin scssImporter() should return an error if files do not exist
                   
               </td>
               <td class="test-duration">1</td>
           </tr>
-          <tr class="show Stencil-Styles_Plugin scssImporter() failure">
-              <td class="test-id">4</td>
+          <tr class="show Stencil-Styles_Plugin scssImporter() success">
+              <td class="test-id">15</td>
               <td class="test-title">Stencil-Styles Plugin scssImporter() should return an object with a file name and content
-                  <div class="stack">Error: Expected { Object () } to include { file: &#x27;other/otherfull.scss&#x27; }
-        at null.&lt;anonymous&gt; (/Users/jared.stoffan/Projects/stencil/stencil-styles/node_modules/code/lib/index.js:137:17)
-        at /Users/jared.stoffan/Projects/stencil/stencil-styles/test/index.js:80:31
-        at Immediate._onImmediate (/Users/jared.stoffan/Projects/stencil/stencil-styles/node_modules/lab/lib/runner.js:455:17)
-        at processImmediate [as _immediateCallback] (timers.js:367:17)</div>
+                  
               </td>
-              <td class="test-duration">4</td>
+              <td class="test-duration">11</td>
           </tr>
           <tr class="show Stencil-Styles_Plugin stencilFont() success">
-              <td class="test-id">5</td>
+              <td class="test-id">16</td>
               <td class="test-title">Stencil-Styles Plugin stencilFont() should call the Google font parser for Google fonts
+                  
+              </td>
+              <td class="test-duration">2</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin stencilFont() success">
+              <td class="test-id">17</td>
+              <td class="test-title">Stencil-Styles Plugin stencilFont() should call the default parser if provider is not detected
                   
               </td>
               <td class="test-duration">1</td>
           </tr>
-          <tr class="show Stencil-Styles_Plugin stencilFont() success">
-              <td class="test-id">6</td>
-              <td class="test-title">Stencil-Styles Plugin stencilFont() should return Sass.NULL if the provider is not supported
+          <tr class="show Stencil-Styles_Plugin googleFontParser() success">
+              <td class="test-id">18</td>
+              <td class="test-title">Stencil-Styles Plugin googleFontParser() should remove the Google_ from the value and call defaultParser
+                  
+              </td>
+              <td class="test-duration">1</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin defaultFontParser() success">
+              <td class="test-id">19</td>
+              <td class="test-title">Stencil-Styles Plugin defaultFontParser() should return the font family name
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin defaultFontParser() success">
+              <td class="test-id">20</td>
+              <td class="test-title">Stencil-Styles Plugin defaultFontParser() should return the font weight
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin defaultFontParser() success">
+              <td class="test-id">21</td>
+              <td class="test-title">Stencil-Styles Plugin defaultFontParser() should return the first font weight if multiple are defined
+                  
+              </td>
+              <td class="test-duration">0</td>
+          </tr>
+          <tr class="show Stencil-Styles_Plugin defaultFontParser() success">
+              <td class="test-id">22</td>
+              <td class="test-title">Stencil-Styles Plugin defaultFontParser() should return a typeof Sass.NULL if family / weight is empty
                   
               </td>
               <td class="test-duration">0</td>
@@ -622,20 +736,20 @@
     
     </div>    <div id="coverage">
         <h1>Code Coverage Report</h1>
-        <div class="stats medium">
-            <div class="percentage">74.14%</div>
-            <div class="sloc">174</div>
-            <div class="hits">129</div>
-            <div class="misses">45</div>
+        <div class="stats high">
+            <div class="percentage">86.01%</div>
+            <div class="sloc">243</div>
+            <div class="hits">209</div>
+            <div class="misses">34</div>
         </div>
         <div id="files">
             <div class="file">
-                <h2 id="lib/index.module.js">lib/index.module.js</h2>
-                <div class="stats medium">
-                    <div class="percentage">74.14%</div>
-                    <div class="sloc">174</div>
-                    <div class="hits">129</div>
-                    <div class="misses">45</div>
+                <h2 id="lib/styles.js">lib/styles.js</h2>
+                <div class="stats high">
+                    <div class="percentage">86.01%</div>
+                    <div class="sloc">243</div>
+                    <div class="hits">209</div>
+                    <div class="misses">34</div>
                 </div>
                 <table>
                     <thead>
@@ -650,212 +764,212 @@
                         <tr class="hit">
                             <td class="line" data-tooltip>1</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>1</td>
-                            <td class="source">var _ &#x3D; require(&#x27;lodash&#x27;),</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">&#x27;use strict&#x27;;</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>2</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">    Autoprefixer &#x3D; require(&#x27;autoprefixer-core&#x27;),</td>
+                            <td class="source"></td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>3</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    Fs &#x3D; require(&#x27;fs&#x27;),</td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">const _ &#x3D; require(&#x27;lodash&#x27;);</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>4</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    Hoek &#x3D; require(&#x27;hoek&#x27;),</td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">const autoprefixer &#x3D; require(&#x27;autoprefixer-core&#x27;);</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>5</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    Path &#x3D; require(&#x27;path&#x27;),</td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">const path &#x3D; require(&#x27;path&#x27;);</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>6</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    Sass &#x3D; require(&#x27;node-sass&#x27;),</td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">const sass &#x3D; require(&#x27;node-sass&#x27;);</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>7</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">    internals &#x3D; {</td>
+                            <td class="source"></td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>8</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        fullUrls: {},</td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">function StencilStyles() {</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>9</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        options: {</td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.files &#x3D; {};</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>10</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            importRegex: /@import\s*?&quot;(.*)&quot;;/g</td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.fullUrls &#x3D; {};</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>11</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
+                            <td class="source"></td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>12</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">    };</td>
+                            <td class="source">    /**</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>13</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>14</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>1</td>
-                            <td class="source">module.exports &#x3D; function StencilStyles(options) {</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>15</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>6</td>
-                            <td class="source">    var self &#x3D; this;</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>16</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
-                            <tr class="chunks">
-                                <td class="line" data-tooltip>17</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source"><div>    self.options &#x3D; Hoek.applyToDefaults(internals.options, </div><div class="miss true" data-tooltip>options</div><div> || </div><div class="miss never" data-tooltip>{}</div><div>);</div></td>
-                            </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>18</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>19</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    /**</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>20</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
                             <td class="source">     * Compiles the CSS based on which compiler has been specified</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>21</td>
+                            <td class="line" data-tooltip>14</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     *</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>22</td>
+                            <td class="line" data-tooltip>15</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     * @param compiler</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>23</td>
+                            <td class="line" data-tooltip>16</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     * @param options</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>24</td>
+                            <td class="line" data-tooltip>17</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     * @param callback</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>25</td>
+                            <td class="line" data-tooltip>18</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     */</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>26</td>
+                            <td class="line" data-tooltip>19</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>6</td>
-                            <td class="source">    self.compileCss &#x3D; function(compiler, options, callback) {</td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.compileCss &#x3D; (compiler, options, callback) &#x3D;&gt; {</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>27</td>
+                            <td class="line" data-tooltip>20</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip>2</td>
                             <td class="source">        switch(compiler) {</td>
                         </tr>
                         <tr class="hit">
+                            <td class="line" data-tooltip>21</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        case &#x27;scss&#x27;:</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>22</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">            const compilerOptions &#x3D; {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>23</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                data: options.data,</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>24</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                dest: options.dest,</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>25</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                sourceMap: options.sourceMap,</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>26</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                functions: this.scssFunctions(options.themeSettings),</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>27</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                importer: this.scssImporter,</td>
+                        </tr>
+                        <tr class="hit">
                             <td class="line" data-tooltip>28</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">            case &#x27;scss&#x27;:</td>
+                            <td class="source">            };</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>29</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">                self.scssCompiler(options, doneCompiling);</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
                         </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>30</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">                break;</td>
-                        </tr>
+                            <tr class="chunks">
+                                <td class="line" data-tooltip>30</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source"><div>            this.files &#x3D; </div><div class="miss false" data-tooltip>options.files</div><div> || {};</div></td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>31</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">            this.scssCompiler(compilerOptions, doneCompiling);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>32</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">            break;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>33</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">        }</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>32</td>
+                            <td class="line" data-tooltip>34</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>33</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        function doneCompiling(err, css) {</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>34</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            var autoprefixerProcessor;</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>35</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        function doneCompiling(err, css) {</td>
                         </tr>
                             <tr class="chunks">
                                 <td class="line" data-tooltip>36</td>
@@ -885,277 +999,277 @@
                                 <td class="line" data-tooltip>40</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            autoprefixerProcessor &#x3D; Autoprefixer(options.autoprefixerOptions);</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>41</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            css &#x3D; autoprefixerProcessor.process(css).css;</td>
+                                <td class="source" data-tooltip>            const prefixedCss &#x3D; autoprefixer(options.autoprefixerOptions).process(css).css;</td>
                             </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>42</td>
+                            <td class="line" data-tooltip>41</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
                             <tr class="miss">
-                                <td class="line" data-tooltip>43</td>
+                                <td class="line" data-tooltip>42</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            callback(null, css);</td>
+                                <td class="source" data-tooltip>            callback(null, prefixedCss);</td>
                             </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>44</td>
+                            <td class="line" data-tooltip>43</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">        }</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>45</td>
+                            <td class="line" data-tooltip>44</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">    };</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>46</td>
+                            <td class="line" data-tooltip>45</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>47</td>
+                            <td class="line" data-tooltip>46</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">    /**</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>48</td>
+                            <td class="line" data-tooltip>47</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     * Compile SCSS into CSS and return the content</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>49</td>
+                            <td class="line" data-tooltip>48</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     *</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>50</td>
+                            <td class="line" data-tooltip>49</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     * @param options</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>51</td>
+                            <td class="line" data-tooltip>50</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     * @param callback</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>52</td>
+                            <td class="line" data-tooltip>51</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     */</td>
                         </tr>
                         <tr class="hit">
+                            <td class="line" data-tooltip>52</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.scssCompiler &#x3D; (options, callback) &#x3D;&gt; {</td>
+                        </tr>
+                        <tr class="hit">
                             <td class="line" data-tooltip>53</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>6</td>
-                            <td class="source">    self.scssCompiler &#x3D; function(options, callback) {</td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        const params &#x3D; {</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>54</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        var sassFunctions &#x3D; {};</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            data: options.data,</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>55</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="source">            outFile: options.dest,</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>56</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        sassFunctions[&#x27;stencilNumber($name, $unit: px)&#x27;] &#x3D; function(nameObj, unitObj) {</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            functions: options.functions,</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>57</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            var name &#x3D; nameObj.getValue(),</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>57</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            importer: options.importer,</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>58</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                unit &#x3D; unitObj.getValue(),</td>
+                            <td class="source">            sourceMap: options.sourceMap,</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>59</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                ret;</td>
+                            <td class="source">            sourceMapEmbed: options.sourceMap,</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>60</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
+                            <td class="source">        };</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>61</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>61</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            if (options.themeSettings[name]) {</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>62</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                ret &#x3D; new Sass.types.Number(options.themeSettings[name], unit);</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>62</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        try {</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>63</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            } else {</td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">            sass.render(params, (err, result) &#x3D;&gt; {</td>
                         </tr>
-                            <tr class="miss">
+                            <tr class="chunks">
                                 <td class="line" data-tooltip>64</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                ret &#x3D; Sass.NULL;</td>
+                                <td class="source"><div>                if (</div><div class="miss true" data-tooltip>err</div><div>) {</div></td>
                             </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>65</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            }</td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">                    return callback(err);</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>66</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
+                            <td class="source">                }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>67</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
                             <tr class="miss">
-                                <td class="line" data-tooltip>67</td>
+                                <td class="line" data-tooltip>68</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return ret;</td>
+                                <td class="source" data-tooltip>                callback(null, result.css);</td>
                             </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>68</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        };</td>
-                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>69</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="source">            });</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>70</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        sassFunctions[&#x27;stencilColor($name)&#x27;] &#x3D; function(nameObj) {</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>71</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        } catch (e) {</td>
                         </tr>
                             <tr class="miss">
-                                <td class="line" data-tooltip>71</td>
+                                <td class="line" data-tooltip>72</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            var name &#x3D; nameObj.getValue(),</td>
+                                <td class="source" data-tooltip>            process.nextTick(() &#x3D;&gt; {</td>
                             </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>72</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                val,</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>73</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                ret;</td>
-                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>73</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                callback(e);</td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>74</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="source">            });</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>75</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            if (options.themeSettings[name]) {</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>76</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                val &#x3D; options.themeSettings[name];</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>75</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>76</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    };</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>77</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>78</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                if (val[0] &#x3D;&#x3D;&#x3D; &#x27;#&#x27;) {</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>79</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                    val &#x3D; val.substr(1);</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>78</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    /**</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>79</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Generate sass helper functions with access to theme settings</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>80</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                }</td>
+                            <td class="source">     *</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>81</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="source">     * @param themeSettings</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>82</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                ret &#x3D; new Sass.types.Color(parseInt(&#x27;0xff&#x27; + val, 16));</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>82</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @returns object</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>83</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">            } else {</td>
+                            <td class="source">     */</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>84</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                ret &#x3D; Sass.NULL;</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>84</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.scssFunctions &#x3D; (themeSettings) &#x3D;&gt; {</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>85</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            }</td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        const sassFunctions &#x3D; {};</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>86</td>
@@ -1163,72 +1277,72 @@
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>87</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return ret;</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>87</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        sassFunctions[&#x27;stencilNumber($name, $unit: px)&#x27;] &#x3D; (nameObj, unitObj) &#x3D;&gt; {</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>88</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        };</td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            const name &#x3D; nameObj.getValue();</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>89</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            const unit &#x3D; unitObj.getValue();</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>90</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        sassFunctions[&#x27;stencilString($name)&#x27;] &#x3D; function(nameObj) {</td>
-                        </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>91</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            var name &#x3D; nameObj.getValue(),</td>
-                            </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>92</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                ret;</td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            var value &#x3D; 0;</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>93</td>
+                            <td class="line" data-tooltip>91</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>94</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            if (options.themeSettings[name]) {</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>95</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                ret &#x3D; new Sass.types.String(options.themeSettings[name]);</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>92</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            if (themeSettings[name]) {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>93</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>4</td>
+                            <td class="source">                value &#x3D; parseFloat(themeSettings[name]);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>94</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>95</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>96</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            } else {</td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            if (_.isNaN(value)) {</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>97</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                ret &#x3D; Sass.NULL;</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>97</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">                value &#x3D; 0;</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>98</td>
                             <td class="lint empty"></td>
@@ -1241,12 +1355,12 @@
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>100</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return ret;</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>100</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            return new sass.types.Number(value, unit);</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>101</td>
                             <td class="lint empty"></td>
@@ -1262,236 +1376,236 @@
                         <tr class="hit">
                             <td class="line" data-tooltip>103</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        sassFunctions[&#x27;stencilFontFamily($name)&#x27;] &#x3D; function(nameObj) {</td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        sassFunctions[&#x27;stencilColor($name)&#x27;] &#x3D; (nameObj) &#x3D;&gt; {</td>
                         </tr>
                             <tr class="miss">
                                 <td class="line" data-tooltip>104</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return self.stencilFont(options, nameObj.getValue(), &#x27;family&#x27;);</td>
+                                <td class="source" data-tooltip>            const name &#x3D; nameObj.getValue();</td>
                             </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>105</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        };</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>106</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>105</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>            var val;</td>
+                            </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>106</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>            var ret;</td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>107</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        sassFunctions[&#x27;stencilFontWeight($name)&#x27;] &#x3D; function(nameObj) {</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
                         </tr>
                             <tr class="miss">
                                 <td class="line" data-tooltip>108</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return self.stencilFont(options, nameObj.getValue(), &#x27;weight&#x27;);</td>
+                                <td class="source" data-tooltip>            if (themeSettings[name]) {</td>
                             </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>109</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        };</td>
-                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>109</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                val &#x3D; themeSettings[name];</td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>110</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>111</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        try {</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>112</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            var result &#x3D; Sass.renderSync({</td>
-                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>111</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                if (val[0] &#x3D;&#x3D;&#x3D; &#x27;#&#x27;) {</td>
+                            </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>112</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                    val &#x3D; val.substr(1);</td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>113</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                functions: sassFunctions,</td>
+                            <td class="source">                }</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>114</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                data: options.data,</td>
+                            <td class="source"></td>
                         </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>115</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                outFile: options.dest,</td>
-                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>115</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                ret &#x3D; new sass.types.Color(parseInt(&#x27;0xff&#x27; + val, 16));</td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>116</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                sourceMap: true,</td>
+                            <td class="source">            } else {</td>
                         </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>117</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                importer: self.scssImporter,</td>
-                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>117</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                ret &#x3D; sass.NULL;</td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>118</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                sourceMapEmbed: true</td>
+                            <td class="source">            }</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>119</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">            });</td>
+                            <td class="source"></td>
+                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>120</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>            return ret;</td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>121</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        };</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>120</td>
+                            <td class="line" data-tooltip>122</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>123</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        sassFunctions[&#x27;stencilString($name)&#x27;] &#x3D; (nameObj) &#x3D;&gt; {</td>
+                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>124</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>            const name &#x3D; nameObj.getValue();</td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>125</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
                             <tr class="miss">
-                                <td class="line" data-tooltip>121</td>
+                                <td class="line" data-tooltip>126</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            callback(null, result.css);</td>
+                                <td class="source" data-tooltip>            return themeSettings[name]</td>
                             </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>122</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        } catch (e) {</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>123</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            callback(e);</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>124</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>125</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    };</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>126</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>127</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>6</td>
-                            <td class="source">    self.scssImporter &#x3D; function(url, prev) {</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                ? new sass.types.String(themeSettings[name])</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>128</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        var prevParts &#x3D; Path.parse(prev),</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                : sass.NULL;</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>129</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">            urlParts &#x3D; Path.parse(url),</td>
+                            <td class="source">        };</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>130</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">            fullUrls &#x3D; internals.fullUrls,</td>
+                            <td class="source"></td>
                         </tr>
-                            <tr class="chunks">
-                                <td class="line" data-tooltip>131</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source"><div>            fullUrl &#x3D; url + (</div><div class="miss false" data-tooltip>urlParts.ext &#x3D;&#x3D;&#x3D; &#x27;scss&#x27;</div><div> ? </div><div class="miss never" data-tooltip>&#x27;&#x27;</div><div> : &#x27;.scss&#x27;),</div></td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>131</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        sassFunctions[&#x27;stencilImage($image, $size)&#x27;] &#x3D; (imageObj, sizeObj) &#x3D;&gt; {</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>132</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            basePath,</td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            const sizeRegex &#x3D; /^\d+x\d+$/g;</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>133</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            possiblePaths;</td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            const image &#x3D; imageObj.getValue();</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>134</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            const size &#x3D; sizeObj.getValue();</td>
                         </tr>
-                            <tr class="chunks">
-                                <td class="line" data-tooltip>135</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source"><div>        if (</div><div class="miss true" data-tooltip>prev !&#x3D;&#x3D; &#x27;stdin&#x27;</div><div>) {</div></td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>135</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            var ret;</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>136</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            basePath &#x3D; prevParts.dir;</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>137</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            if (themeSettings[image].indexOf(&#x27;{:size}&#x27;) !&#x3D;&#x3D; -1 &amp;&amp; sizeRegex.test(themeSettings[size])) {</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>138</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">                ret &#x3D; new sass.types.String(themeSettings[image].replace(&#x27;{:size}&#x27;, themeSettings[size]));</td>
                         </tr>
-                            <tr class="chunks">
-                                <td class="line" data-tooltip>139</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source"><div>        if (</div><div class="miss true" data-tooltip>basePath</div><div>) {</div></td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>139</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            } else {</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>140</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            fullUrl &#x3D; Path.join(basePath, fullUrl);</td>
+                            <td class="hits" data-tooltip>3</td>
+                            <td class="source">                ret &#x3D; sass.NULL;</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>141</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
+                            <td class="source">            }</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>142</td>
@@ -1499,17 +1613,17 @@
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                            <tr class="chunks">
-                                <td class="line" data-tooltip>143</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source"><div>        if (</div><div class="miss true" data-tooltip>options.files[fullUrl] &#x3D;&#x3D;&#x3D; undefined</div><div>) {</div></td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>143</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>5</td>
+                            <td class="source">            return ret;</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>144</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            possiblePaths &#x3D; _.keys(_.pick(fullUrls, function(val) { return val.indexOf(prev) !&#x3D;&#x3D; -1; }));</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        };</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>145</td>
@@ -1520,350 +1634,350 @@
                         <tr class="hit">
                             <td class="line" data-tooltip>146</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            _.each(possiblePaths, function(possiblePath) {</td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        sassFunctions[&#x27;stencilFontFamily($name)&#x27;] &#x3D; (nameObj) &#x3D;&gt; {</td>
                         </tr>
                             <tr class="miss">
                                 <td class="line" data-tooltip>147</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                var possibleFullUrl &#x3D; Path.join(Path.parse(possiblePath).dir, url);</td>
+                                <td class="source" data-tooltip>            return this.stencilFont(themeSettings[nameObj.getValue()], &#x27;family&#x27;);</td>
                             </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>148</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="source">        };</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>149</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                if (options.files[possibleFullUrl] !&#x3D;&#x3D; undefined) {</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>150</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                    fullUrl &#x3D; possibleFullUrl;</td>
-                            </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>151</td>
+                            <td class="line" data-tooltip>149</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>150</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        sassFunctions[&#x27;stencilFontWeight($name)&#x27;] &#x3D; (nameObj) &#x3D;&gt; {</td>
+                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>151</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>            return this.stencilFont(themeSettings[nameObj.getValue()], &#x27;weight&#x27;);</td>
+                            </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>152</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">                    // We found it so lets kick out of the loop</td>
+                            <td class="source">        };</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>153</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                    return false;</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>153</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>154</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                }</td>
+                            <td class="hits" data-tooltip>12</td>
+                            <td class="source">        return sassFunctions;</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>155</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">            });</td>
+                            <td class="source">    };</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>156</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
+                            <td class="source"></td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>157</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="source">    /**</td>
                         </tr>
-                            <tr class="chunks">
-                                <td class="line" data-tooltip>158</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source"><div>        if (</div><div class="miss true" data-tooltip>options.files[fullUrl] &#x3D;&#x3D;&#x3D; undefined</div><div>) {</div></td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>158</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * The custom importer function to pass to the node-sass compiler</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>159</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">            return new Error(fullUrl + &#x27; doesn\&#x27;t exist!&#x27;);</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     *</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>160</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">        } else {</td>
+                            <td class="source">     * @param url</td>
                         </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>161</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            if (! fullUrls[fullUrl]) {</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>162</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                fullUrls[fullUrl] &#x3D; [url];</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>163</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            } else if (fullUrls[fullUrl].indexOf(url) &#x3D;&#x3D;&#x3D; -1) {</td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>164</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>                fullUrls[fullUrl].push(url)</td>
-                            </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>165</td>
+                            <td class="line" data-tooltip>161</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">            }</td>
+                            <td class="source">     * @param prev</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>166</td>
+                            <td class="line" data-tooltip>162</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>167</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return {</td>
-                            </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>168</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                file: fullUrl,</td>
+                            <td class="source">     * @returns object</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>169</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">                contents: options.files[fullUrl]</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>170</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            };</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>171</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>172</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    };</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>173</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>174</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>6</td>
-                            <td class="source">    self.stencilFont &#x3D; function(options, key, type) {</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>175</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        var value &#x3D; options.themeSettings[key],</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>176</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            provider &#x3D; value.split(&#x27;_&#x27;)[0];</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>177</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>178</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>2</td>
-                            <td class="source">        switch (provider) {</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>179</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            case &#x27;Google&#x27;:</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>180</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>1</td>
-                            <td class="source">                return self.googleFontParser(value, type);</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>181</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            default:</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>182</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>1</td>
-                            <td class="source">                return Sass.NULL;</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>183</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>184</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    };</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>185</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>186</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">    /**</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>187</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">     * Returns the font family or weight for a specific id in the config.</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>188</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">     * Expects the value in the config has a family_weight structure.</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>189</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">     * Eg value: &quot;Google_Open+Sans_700&quot;, &quot;Google_Open+Sans&quot;, &quot;Google_Open_Sans_400_sans&quot;, &quot;Google_Open+Sans_400,700_sans&quot;</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>190</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">     * @param value</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>191</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">     * @param type - &#x27;family&#x27; or &#x27;weight&#x27;</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>192</td>
-                            <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">     * @returns {*}</td>
-                        </tr>
-                        <tr class="hit">
-                            <td class="line" data-tooltip>193</td>
+                            <td class="line" data-tooltip>163</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">     */</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>194</td>
+                            <td class="line" data-tooltip>164</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>6</td>
-                            <td class="source">    self.googleFontParser &#x3D; function(value, type) {</td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.scssImporter &#x3D; (url, prev) &#x3D;&gt; {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>165</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        const files &#x3D; this.files;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>166</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        const prevParts &#x3D; path.parse(prev);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>167</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        const urlParts &#x3D; path.parse(url);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>168</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        const fullUrls &#x3D; this.fullUrls;</td>
                         </tr>
                             <tr class="chunks">
-                                <td class="line" data-tooltip>195</td>
+                                <td class="line" data-tooltip>169</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source"><div>        var index &#x3D; </div><div class="miss true" data-tooltip>type &#x3D;&#x3D;&#x3D; &#x27;family&#x27;</div><div> ? 1 : </div><div class="miss never" data-tooltip>2</div><div>,</div></td>
+                                <td class="source"><div>        var fullUrl &#x3D; url + (</div><div class="miss false" data-tooltip>urlParts.ext &#x3D;&#x3D;&#x3D; &#x27;scss&#x27;</div><div> ? </div><div class="miss never" data-tooltip>&#x27;&#x27;</div><div> : &#x27;.scss&#x27;);</div></td>
                             </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>196</td>
+                            <td class="line" data-tooltip>170</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            formattedString,</td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        var basePath;</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>197</td>
+                            <td class="line" data-tooltip>171</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip></td>
-                            <td class="source">            split;</td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        var possiblePaths;</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>198</td>
+                            <td class="line" data-tooltip>172</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
                             <tr class="chunks">
-                                <td class="line" data-tooltip>199</td>
+                                <td class="line" data-tooltip>173</td>
                                 <td class="lint empty"></td>
                                 <td class="hits" data-tooltip></td>
-                                <td class="source"><div>        if (</div><div class="miss false" data-tooltip>!_.isString(value)</div><div>) {</div></td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>200</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return Sass.NULL;</td>
+                                <td class="source"><div>        if (</div><div class="miss true" data-tooltip>prev !&#x3D;&#x3D; &#x27;stdin&#x27;</div><div>) {</div></td>
                             </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>201</td>
+                            <td class="line" data-tooltip>174</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">            basePath &#x3D; prevParts.dir;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>175</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source">        }</td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>202</td>
+                            <td class="line" data-tooltip>176</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                            <tr class="chunks">
+                                <td class="line" data-tooltip>177</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source"><div>        if (</div><div class="miss true" data-tooltip>basePath</div><div>) {</div></td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>178</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">            fullUrl &#x3D; path.join(basePath, fullUrl);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>179</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>180</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
                         <tr class="hit">
-                            <td class="line" data-tooltip>203</td>
+                            <td class="line" data-tooltip>181</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        if (files[fullUrl] &#x3D;&#x3D;&#x3D; undefined) {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>182</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip>1</td>
-                            <td class="source">        split &#x3D; value.split(&#x27;_&#x27;);</td>
+                            <td class="source">            possiblePaths &#x3D; _.keys(_.pick(fullUrls, val &#x3D;&gt; val.indexOf(prev) !&#x3D;&#x3D; -1));</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>183</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>184</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">            _.each(possiblePaths, possiblePath &#x3D;&gt; {</td>
+                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>185</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                const possibleFullUrl &#x3D; path.join(path.parse(possiblePath).dir, url);</td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>186</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>187</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                if (files[possibleFullUrl] !&#x3D;&#x3D; undefined) {</td>
+                            </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>188</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                    fullUrl &#x3D; possibleFullUrl;</td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>189</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>190</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                    // We found it so lets kick out of the loop</td>
+                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>191</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                    return false;</td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>192</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>193</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            });</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>194</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>195</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>196</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        if (files[fullUrl] &#x3D;&#x3D;&#x3D; undefined) {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>197</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">            return new Error(fullUrl + &#x27; doesn\&#x27;t exist!&#x27;);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>198</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        } else {</td>
+                        </tr>
+                            <tr class="chunks">
+                                <td class="line" data-tooltip>199</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source"><div>            if (</div><div class="miss true" data-tooltip>! fullUrls[fullUrl]</div><div>) {</div></td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>200</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">                fullUrls[fullUrl] &#x3D; [url];</td>
+                        </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>201</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>            } else if (fullUrls[fullUrl].indexOf(url) &#x3D;&#x3D;&#x3D; -1) {</td>
+                            </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>202</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>                fullUrls[fullUrl].push(url)</td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>203</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            }</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>204</td>
@@ -1871,41 +1985,41 @@
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>
                         </tr>
-                            <tr class="chunks">
-                                <td class="line" data-tooltip>205</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source"><div>        if (</div><div class="miss false" data-tooltip>_.isEmpty(split[index])</div><div>) {</div></td>
-                            </tr>
-                            <tr class="miss">
-                                <td class="line" data-tooltip>206</td>
-                                <td class="lint empty"></td>
-                                <td class="hits" data-tooltip></td>
-                                <td class="source" data-tooltip>            return Sass.NULL;</td>
-                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>205</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">            return {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>206</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">                file: fullUrl,</td>
+                        </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>207</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">        }</td>
+                            <td class="source">                contents: files[fullUrl]</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>208</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source"></td>
+                            <td class="source">            };</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>209</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>1</td>
-                            <td class="source">        formattedString &#x3D; split[index].split(&#x27;,&#x27;)[0];</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>210</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>1</td>
-                            <td class="source">        formattedString &#x3D; formattedString.replace(/\+/g, &#x27; &#x27;);</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    };</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>211</td>
@@ -1916,23 +2030,521 @@
                         <tr class="hit">
                             <td class="line" data-tooltip>212</td>
                             <td class="lint empty"></td>
-                            <td class="hits" data-tooltip>1</td>
-                            <td class="source">        return new Sass.types.String(formattedString);</td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    /**</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>213</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">    };</td>
+                            <td class="source">     * Calls the appropriate font parser for a given provider (Google, etc.)</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>214</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
-                            <td class="source">};</td>
+                            <td class="source">     *</td>
                         </tr>
                         <tr class="hit">
                             <td class="line" data-tooltip>215</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @param value</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>216</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @param type</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>217</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @returns string or null</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>218</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     */</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>219</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.stencilFont &#x3D; (value, type) &#x3D;&gt; {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>220</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        const provider &#x3D; value.split(&#x27;_&#x27;)[0];</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>221</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>222</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        switch (provider) {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>223</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        case &#x27;Google&#x27;:</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>224</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">            return this.googleFontParser(value, type);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>225</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        default:</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>226</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">            return this.defaultFontParser(value, type);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>227</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>228</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    };</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>229</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>230</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    /**</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>231</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Removes &quot;Google_&quot; from the value and calls the default parser</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>232</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Expects the value in the config has a family_weight structure.</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>233</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Eg value: &quot;Google_Open+Sans_700&quot;, &quot;Google_Open+Sans&quot;, &quot;Google_Open+Sans_400_sans&quot;, &quot;Google_Open+Sans_400,700_sans&quot;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>234</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @param value</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>235</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @param type - &#x27;family&#x27; or &#x27;weight&#x27;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>236</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @returns {*}</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>237</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     */</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>238</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.googleFontParser &#x3D; (value, type) &#x3D;&gt; {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>239</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        // Splitting the value</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>240</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        // Eg: &#x27;Google_Open+Sans_700&#x27; -&gt; [Google, Open+Sans, 700]</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>241</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        value &#x3D; value.split(&#x27;_&#x27;);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>242</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>243</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        // Removing the Google value</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>244</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        // Eg: [Google, Open+Sans, 700] -&gt; [Open+Sans, 700]</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>245</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        value &#x3D; value.splice(1);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>246</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>247</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        // Join the value again</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>248</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        // Eg: [Open+Sans, 700] -&gt; &#x27;Open+Sans_700&#x27;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>249</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        value &#x3D; value.join(&#x27;_&#x27;);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>250</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>251</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>2</td>
+                            <td class="source">        return this.defaultFontParser(value, type);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>252</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    };</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>253</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>254</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    /**</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>255</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Returns the font family or weight</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>256</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Expects the value to have a family_weight structure.</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>257</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Will convert + to spaces</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>258</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * Eg value: &quot;Open+Sans_700&quot;, &quot;Open Sans&quot;, &quot;Open+Sans_400_sans&quot;, &quot;Open+Sans_400,700_sans&quot;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>259</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @param value</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>260</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @param type - &#x27;family&#x27; or &#x27;weight&#x27;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>261</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     * @returns {*}</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>262</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">     */</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>263</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>22</td>
+                            <td class="source">    this.defaultFontParser &#x3D; (value, type) &#x3D;&gt; {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>264</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>7</td>
+                            <td class="source">        const typeFamily &#x3D; type &#x3D;&#x3D;&#x3D; &#x27;family&#x27;;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>265</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>7</td>
+                            <td class="source">        const index &#x3D; typeFamily ? 0 : 1;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>266</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>7</td>
+                            <td class="source">        var formattedString;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>267</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>7</td>
+                            <td class="source">        var split;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>268</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>269</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>270</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>7</td>
+                            <td class="source">        if (!_.isString(value)) {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>271</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">            return sass.NULL;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>272</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>273</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>274</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>6</td>
+                            <td class="source">        split &#x3D; value.split(&#x27;_&#x27;);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>275</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                            <tr class="chunks">
+                                <td class="line" data-tooltip>276</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source"><div>        if (</div><div class="miss false" data-tooltip>_.isEmpty(split[index])</div><div>) {</div></td>
+                            </tr>
+                            <tr class="miss">
+                                <td class="line" data-tooltip>277</td>
+                                <td class="lint empty"></td>
+                                <td class="hits" data-tooltip></td>
+                                <td class="source" data-tooltip>            return sass.NULL;</td>
+                            </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>278</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>279</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>280</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>6</td>
+                            <td class="source">        formattedString &#x3D; split[index].split(&#x27;,&#x27;)[0];</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>281</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>6</td>
+                            <td class="source">        formattedString &#x3D; formattedString.replace(/\+/g, &#x27; &#x27;);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>282</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>283</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        // Make sure the string has no quotes in it</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>284</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>6</td>
+                            <td class="source">        formattedString &#x3D; formattedString.replace(/&#x27;|&quot;/g, &#x27;&#x27;);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>285</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>286</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>6</td>
+                            <td class="source">        if (typeFamily) {</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>287</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            // Wrap the string in quotes since Sass type String</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>288</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            // works with quotes and without quotes (it won&#x27;t add them)</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>289</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">            // and we end up with font-family: Open Sans with no quotes</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>290</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>4</td>
+                            <td class="source">            formattedString &#x3D; &#x27;&quot;&#x27; + formattedString + &#x27;&quot;&#x27;;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>291</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">        }</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>292</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>293</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>6</td>
+                            <td class="source">        return sass.types.String(formattedString);</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>294</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">    };</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>295</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source">};</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>296</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip></td>
+                            <td class="source"></td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>297</td>
+                            <td class="lint empty"></td>
+                            <td class="hits" data-tooltip>1</td>
+                            <td class="source">module.exports &#x3D; StencilStyles;</td>
+                        </tr>
+                        <tr class="hit">
+                            <td class="line" data-tooltip>298</td>
                             <td class="lint empty"></td>
                             <td class="hits" data-tooltip></td>
                             <td class="source"></td>

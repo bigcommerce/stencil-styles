@@ -1,10 +1,12 @@
 {
   "name": "@bigcommerce/stencil-styles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Compiles SCSS for the Stencil Framework",
   "main": "lib/index.js",
   "scripts": {
-    "test": "lab -t 75 -e 'development'",
+    "test": "npm run lint && npm run run-tests",
+    "lint": "eslint .",
+    "run-tests": "lab -t 85 -e 'development'",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "repository": {
@@ -19,13 +21,12 @@
   "homepage": "https://github.com/bigcommerce/stencil-styles#readme",
   "dependencies": {
     "autoprefixer-core": "^5.2.1",
-    "hoek": "^2.14.0",
-    "less": "^2.5.1",
     "lodash": "^3.10.1",
     "node-sass": "3.4.2"
   },
   "devDependencies": {
     "code": "^1.4.0",
+    "eslint": "^3.15.0",
     "lab": "^5.5.1",
     "sinon": "^1.14.1"
   }
