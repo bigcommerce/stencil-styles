@@ -22,7 +22,7 @@
   "dependencies": {
     "autoprefixer": "^6.7.3",
     "lodash": "^3.10.1",
-    "node-sass": "3.4.2",
+    "node-sass": "~3.13.0",
     "postcss": "^5.2.14"
   },
   "devDependencies": {
