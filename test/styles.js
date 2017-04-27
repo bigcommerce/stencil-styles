@@ -4,7 +4,7 @@ const _ = require('lodash');
 const Code = require('code');
 const Lab = require('lab');
 const sinon = require('sinon');
-const Sass = require('node-sass');
+const Sass = require('@bigcommerce/node-sass');
 const StencilStyles = require('../lib/styles');
 const lab = exports.lab = Lab.script();
 const afterEach = lab.afterEach;
