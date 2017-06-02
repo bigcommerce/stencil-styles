@@ -7,7 +7,7 @@
     "modules": true
   },
   "env": {
-    "node": true,
+    "node": true
   },
   "globals": {
 
@@ -15,6 +15,7 @@
   "rules": {
     "curly": 2,
     "no-eq-null": 2,
+    "comma-dangle": [ 2, "always-multiline" ],
     "wrap-iife": [ 2, "any" ],
     "new-cap": 2,
     "no-caller": 2,
@@ -22,6 +23,6 @@
     "no-debugger": 2,
     "no-undef": 2,
     "no-unused-vars": 2,
-    "indent": [2, 4],
+    "indent": [2, 4]
   }
 }
