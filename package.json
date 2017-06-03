@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint && npm run run-tests",
     "lint": "eslint .",
-    "run-tests": "lab -t 82 -e 'development'",
+    "run-tests": "lab -t 85 -e 'development'",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "repository": {

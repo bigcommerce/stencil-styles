@@ -30,6 +30,7 @@ describe('Stencil-Styles Plugin', () => {
 
         files[osPath('/mock/path1.scss')] = 'color: #fff';
         files[osPath('/mock/path2.scss')] = 'color: #000';
+        files[osPath('/mock/path3.scss')] = 'color: #aaa';
 
         options = {
             files,
@@ -71,33 +72,62 @@ describe('Stencil-Styles Plugin', () => {
     });
 
     describe('compileCss()', () => {
-        let callback;
 
-        beforeEach(done => {
-            callback = sinon.spy();
-            sinon.spy(stencilStyles, 'scssCompiler');
+        describe('when compilations succeed', () => {
+            let callback;
+            beforeEach(done => {
+                callback = sinon.spy();
+                sinon.spy(stencilStyles, 'scssCompiler');
 
-            stencilStyles.compileCss('scss', options, callback);
+                stencilStyles.compileCss('scss', options, callback);
 
-            done();
+                done();
+            });
+
+            it('should call the scss compiler based on the compiler parameter', done => {
+                expect(stencilStyles.scssCompiler.calledOnce).to.equal(true);
+
+                done();
+            });
+
+            it('should call the callback passed in once compilation is complete', done => {
+                expect(callback.calledOnce).to.equal(true);
+
+                done();
+            });
+
+            it('should return error if compilation fails', done => {
+                expect(callback.calledOnce).to.equal(true);
+
+                done();
+            });
+
+            afterEach(done => {
+                stencilStyles.scssCompiler.restore();
+
+                done();
+            });
         });
 
-        it('should call the scss compiler based on the compiler parameter', done => {
-            expect(stencilStyles.scssCompiler.calledOnce).to.equal(true);
 
-            done();
-        });
+        describe('when compilations fails', () => {
+            beforeEach(done => {
+                sinon.stub(Sass, 'render').throws("Error");
+                done();
+            });
 
-        it('should call the callback passed in once compilation is complete', done => {
-            expect(callback.calledOnce).to.equal(true);
+            afterEach(done => {
+                Sass.render.restore();
 
-            done();
-        });
+                done();
+            });
 
-        afterEach(done => {
-            stencilStyles.scssCompiler.restore();
-
-            done();
+            it('should call the scss compiler based on the compiler parameter', done => {
+                stencilStyles.compileCss('scss', options, (err) => {
+                    expect(err).to.be.an.instanceof(Error);
+                    done();
+                });
+            });
         });
     });
 
@@ -261,6 +291,15 @@ describe('Stencil-Styles Plugin', () => {
             expect(result).to.include({ file: 'file1.scss' });
             expect(result).to.include({ contents: 'foo' });
 
+            done();
+        });
+
+        it('should resolve full url', done => {
+            stencilStyles.files[osPath('/foo/bar/file.scss')] = 'foo';
+            stencilStyles.fullUrls[osPath('/foo/file.scss')] = [osPath('/a/prev.scss')];
+
+            const result = stencilStyles.scssImporter(osPath('/bar/file.scss'), osPath('/a/prev.scss'));
+            expect(result.file).to.equal(osPath('/foo/bar/file.scss'));
             done();
         });
     });
