@@ -143,6 +143,7 @@ describe('Stencil-Styles Plugin', () => {
                 'stencilImage($image, $size)',
                 'stencilFontFamily($name)',
                 'stencilFontWeight($name)',
+                'stencilWebDAV($asset)',
             ]);
 
             done();
@@ -245,6 +246,33 @@ describe('Stencil-Styles Plugin', () => {
                 const size = new Sass.types.String('img-size');
 
                 expect(stencilImage(image, size) instanceof Sass.types.String).to.equal(true);
+
+                done();
+            });
+        });
+
+        describe('stencilWebDAV', () => {
+            let stencilWebDAV;
+            const cdnUrl = 'https://cdn7.bigcommerce.com/wl3b9dt0cd';
+
+            beforeEach(done => {
+                stencilWebDAV = stencilStyles.scssFunctions(themeSettings, cdnUrl)['stencilWebDAV($asset)'];
+
+                done();
+            });
+
+            it('should return the expected string value', done => {
+                const asset = new Sass.types.String('img/image.jpg');
+
+                expect(stencilWebDAV(asset).getValue()).to.equal('https://cdn7.bigcommerce.com/wl3b9dt0cd/content/img/image.jpg');
+
+                done();
+            });
+
+            it('should return a Sass.types.String', done => {
+                const asset = new Sass.types.String('img/image.jpg');
+
+                expect(stencilWebDAV(asset) instanceof Sass.types.String).to.equal(true);
 
                 done();
             });
