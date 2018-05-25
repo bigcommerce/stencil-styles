@@ -52,8 +52,8 @@ describe('Stencil-Styles Plugin', () => {
 
     describe('autoPrefix', () => {
         it('should add vendor prefixes to css rules', done => {
-            const prefixedCss = stencilStyles.autoPrefix('a { transform: scale(0.5); }', {});
-            expect(prefixedCss).to.contain(['-webkit-transform']);
+            const prefixedCss = stencilStyles.autoPrefix('a { user-select: none; }', {});
+            expect(prefixedCss).to.contain(['-webkit-user-select']);
             done();
         });
 
