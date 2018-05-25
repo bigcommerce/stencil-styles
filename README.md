@@ -1,6 +1,9 @@
 # Stencil Styles
 ## Compiles SCSS On-The-Fly for the Stencil Framework
 
+### Travis Testing
+No code changes. Only added these two README lines.
+
 ### Usage
 *This is assuming you are using Glue and have added `stencil-styles` to your manifest file*
 
