@@ -5,7 +5,7 @@ const Code = require('code');
 const Os = require('os');
 const Lab = require('lab');
 const sinon = require('sinon');
-const Sass = require('@bigcommerce/node-sass');
+const Sass = require('node-sass');
 const StencilStyles = require('../lib/styles');
 const lab = exports.lab = Lab.script();
 const afterEach = lab.afterEach;
