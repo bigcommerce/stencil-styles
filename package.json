@@ -23,7 +23,7 @@
     "autoprefixer": "^9.1.5",
     "lodash": "^3.10.1",
     "node-sass": "^4.9.3",
-    "postcss": "^5.2.18"
+    "postcss": "^7.0.2"
   },
   "devDependencies": {
     "code": "^4.1.0",
