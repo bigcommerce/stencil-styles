@@ -24,7 +24,7 @@ describe('Stencil-Styles Plugin', () => {
         return Os.platform() === 'win32' ? path.replace(/\//g, "\\") : path;
     }
 
-    beforeEach(() => {
+    beforeEach(done => {
         themeSettings = require('./mocks/settings.json');
         files = {};
 
@@ -38,29 +38,36 @@ describe('Stencil-Styles Plugin', () => {
             themeSettings,
         };
         stencilStyles = new StencilStyles();
+
+        done();
     });
 
     describe('constructor', () => {
-        it('should set the fullUrls object to empty', () => {
+        it('should set the fullUrls object to empty', done => {
             expect(stencilStyles.fullUrls).to.be.empty();
+
+            done();
         });
     });
 
     describe('autoPrefix', () => {
-        it('should add vendor prefixes to css rules', () => {
+        it('should add vendor prefixes to css rules', done => {
             const prefixedCss = stencilStyles.autoPrefix('a { transform: scale(0.5); }', {});
             expect(prefixedCss).to.contain(['-webkit-transform']);
+            done();
         });
 
-        it('should return an empty string if input is not a string', () => {
+        it('should return an empty string if input is not a string', done => {
             expect(stencilStyles.autoPrefix(null)).to.be.equal('');
             expect(stencilStyles.autoPrefix({})).to.be.equal('');
             expect(stencilStyles.autoPrefix(undefined)).to.be.equal('');
+            done();
         });
 
-        it('should return the input string if not valid css', () => {
+        it('should return the input string if not valid css', done => {
             const notCss = 'this is not css';
             expect(stencilStyles.autoPrefix(notCss)).to.be.equal(notCss);
+            done();
         });
     });
 
@@ -68,50 +75,64 @@ describe('Stencil-Styles Plugin', () => {
 
         describe('when compilations succeed', () => {
             let callback;
-            beforeEach(() => {
+            beforeEach(done => {
                 callback = sinon.spy();
                 sinon.spy(stencilStyles, 'scssCompiler');
 
                 stencilStyles.compileCss('scss', options, callback);
+
+                done();
             });
 
-            it('should call the scss compiler based on the compiler parameter', () => {
+            it('should call the scss compiler based on the compiler parameter', done => {
                 expect(stencilStyles.scssCompiler.calledOnce).to.equal(true);
+
+                done();
             });
 
-            it('should call the callback passed in once compilation is complete', () => {
+            it('should call the callback passed in once compilation is complete', done => {
                 expect(callback.calledOnce).to.equal(true);
+
+                done();
             });
 
-            it('should return error if compilation fails', () => {
+            it('should return error if compilation fails', done => {
                 expect(callback.calledOnce).to.equal(true);
+
+                done();
             });
 
-            afterEach(() => {
+            afterEach(done => {
                 stencilStyles.scssCompiler.restore();
+
+                done();
             });
         });
 
 
         describe('when compilations fails', () => {
-            beforeEach(() => {
+            beforeEach(done => {
                 sinon.stub(Sass, 'render').throws("Error");
+                done();
             });
 
-            afterEach(() => {
+            afterEach(done => {
                 Sass.render.restore();
+
+                done();
             });
 
-            it('should call the scss compiler based on the compiler parameter', () => {
+            it('should call the scss compiler based on the compiler parameter', done => {
                 stencilStyles.compileCss('scss', options, (err) => {
                     expect(err).to.be.an.instanceof(Error);
+                    done();
                 });
             });
         });
     });
 
     describe('scssFunctions', () => {
-        it('should return an array with all required functions', () => {
+        it('should return an array with all required functions', done => {
             const result = stencilStyles.scssFunctions(themeSettings);
 
             expect(result).to.be.an.object();
@@ -123,200 +144,255 @@ describe('Stencil-Styles Plugin', () => {
                 'stencilFontFamily($name)',
                 'stencilFontWeight($name)',
             ]);
+
+            done();
         });
 
         describe('stencilNumber', () => {
             let stencilNumber;
 
-            beforeEach(() => {
+            beforeEach(done => {
                 stencilNumber = stencilStyles.scssFunctions(themeSettings)['stencilNumber($name, $unit: px)'];
+
+                done();
             });
 
-            it('should return the expected number and unit value', () => {
+            it('should return the expected number and unit value', done => {
                 const settingName = new Sass.types.String('google-font-size');
                 const unit = new Sass.types.String('em');
 
                 expect(stencilNumber(settingName, unit).getValue()).to.equal(14);
                 expect(stencilNumber(settingName, unit).getUnit()).to.equal('em');
+
+                done();
             });
 
-            it('should return 0 if passed a wrong setting name', () => {
+            it('should return 0 if passed a wrong setting name', done => {
                 const settingName = new Sass.types.String('wrong-setting');
                 const unit = new Sass.types.String('px');
 
                 expect(stencilNumber(settingName, unit).getValue()).to.equal(0);
+
+                done();
             });
 
-            it('should return 0 if passed a wrong setting value', () => {
+            it('should return 0 if passed a wrong setting value', done => {
                 const settingName = new Sass.types.String('google-font-wrong-size');
                 const unit = new Sass.types.String('px');
 
                 expect(stencilNumber(settingName, unit).getValue()).to.equal(0);
+
+                done();
             });
 
-            it('should return a Sass.types.Number', () => {
+            it('should return a Sass.types.Number', done => {
                 const settingName = new Sass.types.String('google-font-size');
                 const unit = new Sass.types.String('px');
 
                 expect(stencilNumber(settingName, unit) instanceof Sass.types.Number).to.equal(true);
+
+                done();
             });
         });
 
         describe('stencilImage', () => {
             let stencilImage;
 
-            beforeEach(() => {
+            beforeEach(done => {
                 stencilImage = stencilStyles.scssFunctions(themeSettings)['stencilImage($image, $size)'];
+
+                done();
             });
 
-            it('should return the expected string value', () => {
+            it('should return the expected string value', done => {
                 const image = new Sass.types.String('img-url');
                 const size = new Sass.types.String('img-size');
 
                 expect(stencilImage(image, size).getValue()).to.equal('stencil/1000x400/example.jpg');
+
+                done();
             });
 
-            it('should return null if passed an empty image url value', () => {
+            it('should return null if passed an empty image url value', done => {
                 const image = new Sass.types.String('img-url-empty');
                 const size = new Sass.types.String('img-size');
 
                 expect(stencilImage(image, size)).to.equal(Sass.NULL);
+
+                done();
             });
 
-            it('should return null if passed a wrong image url value', () => {
+            it('should return null if passed a wrong image url value', done => {
                 const image = new Sass.types.String('img-url-wrong--format');
                 const size = new Sass.types.String('img-size');
 
                 expect(stencilImage(image, size)).to.equal(Sass.NULL);
+
+                done();
             });
 
-            it('should return null if passed a wrong image dimension value', () => {
+            it('should return null if passed a wrong image dimension value', done => {
                 const image = new Sass.types.String('img-url');
                 const size = new Sass.types.String('img-size-wrong--format');
 
                 expect(stencilImage(image, size)).to.equal(Sass.NULL);
+
+                done();
             });
 
-            it('should return a Sass.types.String', () => {
+            it('should return a Sass.types.String', done => {
                 const image = new Sass.types.String('img-url');
                 const size = new Sass.types.String('img-size');
 
                 expect(stencilImage(image, size) instanceof Sass.types.String).to.equal(true);
+
+                done();
             });
         });
     });
 
     describe('scssImporter()', () => {
-        it('should return an error if files do not exist', () => {
+        it('should return an error if files do not exist', done => {
             const result = stencilStyles.scssImporter('/path2', 'other/path1.scss');
 
             expect(result.constructor).to.equal(Error);
             expect(result.message).to.include("doesn't exist!");
+
+            done();
         });
 
-        it('should return an object with a file name and content', () => {
+        it('should return an object with a file name and content', done => {
             stencilStyles.files = options.files;
             const result = stencilStyles.scssImporter(osPath('/path2'), osPath('/mock/path1.scss'));
 
             expect(result).to.be.an.object();
             expect(result).to.include({ file: osPath('/mock/path2.scss') });
             expect(result).to.include({ contents: files[osPath('/mock/path2.scss')] });
+
+            done();
         });
 
-        it('should succeed when the extension is passed', () => {
+        it('should succeed when the extension is passed', done => {
             stencilStyles.files = options.files;
             const result = stencilStyles.scssImporter(osPath('/path2'), osPath('/mock/path1.scss'));
 
             expect(result).to.be.an.object();
             expect(result).to.include({ file: osPath('/mock/path2.scss') });
             expect(result).to.include({ contents: files[osPath('/mock/path2.scss')] });
+
+            done();
         });
 
-        it('should succeed when ran from the root path (prev=stdin)', () => {
+        it('should succeed when ran from the root path (prev=stdin)', done => {
             stencilStyles.files = { "file1.scss": 'foo' };
             const result = stencilStyles.scssImporter('file1', 'stdin');
 
             expect(result).to.be.an.object();
             expect(result).to.include({ file: 'file1.scss' });
             expect(result).to.include({ contents: 'foo' });
+
+            done();
         });
 
-        it('should resolve full url', () => {
+        it('should resolve full url', done => {
             stencilStyles.files[osPath('/foo/bar/file.scss')] = 'foo';
             stencilStyles.fullUrls[osPath('/foo/file.scss')] = [osPath('/a/prev.scss')];
 
             const result = stencilStyles.scssImporter(osPath('/bar/file.scss'), osPath('/a/prev.scss'));
             expect(result.file).to.equal(osPath('/foo/bar/file.scss'));
+            done();
         });
     });
 
     describe('stencilFont()', () => {
-        beforeEach(() => {
+        beforeEach(done => {
             sinon.spy(stencilStyles, 'googleFontParser');
             sinon.spy(stencilStyles, 'defaultFontParser');
+
+            done();
         });
 
-        it('should call the Google font parser for Google fonts', () => {
+        it('should call the Google font parser for Google fonts', done => {
             stencilStyles.stencilFont(themeSettings['google-font'], 'family');
 
             expect(stencilStyles.googleFontParser.calledOnce).to.equal(true);
+
+            done();
         });
 
-        it('should call the default parser if provider is not detected', () => {
+        it('should call the default parser if provider is not detected', done => {
             stencilStyles.stencilFont(themeSettings['native-font'], 'family');
 
             expect(stencilStyles.defaultFontParser.calledOnce).to.equal(true);
+
+            done();
         });
 
-        afterEach(() => {
+        afterEach(done => {
             stencilStyles.googleFontParser.restore();
             stencilStyles.defaultFontParser.restore();
+
+            done();
         });
     });
 
     describe('googleFontParser()', () => {
-        beforeEach(() => {
+        beforeEach(done => {
             sinon.spy(stencilStyles, 'defaultFontParser');
+
+            done();
         });
 
         const googleFont = 'Google_Open+Sans_400';
 
-        it('should remove the Google_ from the value and call defaultParser', () => {
+        it('should remove the Google_ from the value and call defaultParser', done => {
             stencilStyles.googleFontParser(googleFont, 'family');
 
             expect(stencilStyles.defaultFontParser.calledWith('Open+Sans_400', 'family')).to.equal(true);
+
+            done();
         });
 
-        afterEach(() => {
+        afterEach(done => {
             stencilStyles.defaultFontParser.restore();
+
+            done();
         });
     });
 
     describe('defaultFontParser()', () => {
         const nativeFont = 'Times New Roman_400';
 
-        it('should return the font family name', () => {
+        it('should return the font family name', done => {
             const result = stencilStyles.defaultFontParser(nativeFont, 'family');
 
             expect(result.getValue()).to.equal('"Times New Roman"');
+
+            done();
         });
 
-        it('should return the font weight', () => {
+        it('should return the font weight', done => {
             const result = stencilStyles.defaultFontParser(nativeFont, 'weight');
 
             expect(result.getValue()).to.equal('400');
+
+            done();
         });
 
-        it('should return the first font weight if multiple are defined', () => {
+        it('should return the first font weight if multiple are defined', done => {
             const result = stencilStyles.defaultFontParser('Times New Roman_400,700,800', 'weight');
 
             expect(result.getValue()).to.equal('400');
+
+            done();
         });
 
-        it('should return a typeof Sass.NULL if family / weight is empty', () => {
+        it('should return a typeof Sass.NULL if family / weight is empty', done => {
             const result = stencilStyles.defaultFontParser(undefined, 'family');
 
             expect(result instanceof Sass.types.Null).to.equal(true);
+
+            done();
         });
     });
 });
