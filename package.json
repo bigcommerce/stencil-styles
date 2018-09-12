@@ -26,7 +26,7 @@
     "postcss": "^7.0.2"
   },
   "devDependencies": {
-    "code": "^4.1.0",
+    "code": "^5.2.0",
     "eslint": "^5.5.0",
     "lab": "^14.3.4",
     "sinon": "^6.2.0"
