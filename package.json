@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/bigcommerce/stencil-styles#readme",
   "dependencies": {
-    "@bigcommerce/node-sass": "git://github.com/bc-zoharmuzafi/node-sass.git#support_node10",
+    "@bigcommerce/node-sass": "git://github.com/bigcommerce-labs/node-sass#support_node10",
     "autoprefixer": "^6.7.3",
     "lodash": "^3.10.1",
     "postcss": "^5.2.14"
