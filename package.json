@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/stencil-styles",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Compiles SCSS for the Stencil Framework",
   "main": "lib/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/bigcommerce/stencil-styles#readme",
   "dependencies": {
-    "@bigcommerce/node-sass": "git://github.com/bigcommerce-labs/node-sass.git#v3.4.4",
+    "@bigcommerce/node-sass": "git://github.com/bigcommerce-labs/node-sass.git#support_node10",
     "autoprefixer": "^6.7.3",
     "lodash": "^3.10.1",
     "postcss": "^5.2.14"
