@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint && npm run run-tests",
     "lint": "eslint .",
-    "run-tests": "lab -t 85 -e 'development'",
+    "run-tests": "lab -t 85 -e 'development' --ignore SharedArrayBuffer,Atomics",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "repository": {
@@ -29,7 +29,7 @@
   "devDependencies": {
     "code": "^4.0.0",
     "eslint": "^3.15.0",
-    "lab": "^14.3.1",
+    "lab": "^13.1.0",
     "sinon": "^1.14.1"
   }
 }
