@@ -5,7 +5,7 @@ const Code = require('code');
 const Os = require('os');
 const Lab = require('lab');
 const sinon = require('sinon');
-const Sass = require('@bigcommerce/node-sass');
+const legacySass = require('@bigcommerce/node-sass');
 const StencilStyles = require('../lib/styles');
 const lab = exports.lab = Lab.script();
 const afterEach = lab.afterEach;
@@ -112,12 +112,12 @@ describe('Stencil-Styles Plugin', () => {
 
         describe('when compilations fails', () => {
             beforeEach(done => {
-                sinon.stub(Sass, 'render').throws("Error");
+                sinon.stub(legacySass, 'render').throws("Error");
                 done();
             });
 
             afterEach(done => {
-                Sass.render.restore();
+                legacySass.render.restore();
 
                 done();
             });
@@ -127,6 +127,41 @@ describe('Stencil-Styles Plugin', () => {
                     expect(err).to.be.an.instanceof(Error);
                     done();
                 });
+            });
+        });
+    });
+
+    describe('scssCompiler()', () => {
+        describe('when called choosing the right sass version to render', () => {
+            let callback;
+            beforeEach(done => {
+                callback = sinon.spy();
+                sinon.spy(stencilStyles, 'scssRender');
+                sinon.spy(stencilStyles, 'legacyScssRender');
+                done();
+            });
+
+            it('should call legacy scss render function if v3 version passed', done => {
+                options['version'] = 'sass_v3';
+                stencilStyles.scssCompiler(options, callback);
+                expect(stencilStyles.legacyScssRender.calledOnce).to.equal(true);
+                expect(stencilStyles.scssRender.notCalled).to.equal(true);
+                done();
+            });
+
+            it('should call legacy scss render function if no version passed', done => {
+                stencilStyles.scssCompiler(options, callback);
+                expect(stencilStyles.legacyScssRender.calledOnce).to.equal(true);
+                expect(stencilStyles.scssRender.notCalled).to.equal(true);
+                done();
+            });
+
+            it('should call scss render function if v4 version passed', done => {
+                options['version'] = 'sass_v4';
+                stencilStyles.scssCompiler(options, callback);
+                expect(stencilStyles.scssRender.calledOnce).to.equal(true);
+                expect(stencilStyles.legacyScssRender.notCalled).to.equal(true);
+                done();
             });
         });
     });
@@ -158,8 +193,8 @@ describe('Stencil-Styles Plugin', () => {
             });
 
             it('should return the expected number and unit value', done => {
-                const settingName = new Sass.types.String('google-font-size');
-                const unit = new Sass.types.String('em');
+                const settingName = new legacySass.types.String('google-font-size');
+                const unit = new legacySass.types.String('em');
 
                 expect(stencilNumber(settingName, unit).getValue()).to.equal(14);
                 expect(stencilNumber(settingName, unit).getUnit()).to.equal('em');
@@ -168,8 +203,8 @@ describe('Stencil-Styles Plugin', () => {
             });
 
             it('should return 0 if passed a wrong setting name', done => {
-                const settingName = new Sass.types.String('wrong-setting');
-                const unit = new Sass.types.String('px');
+                const settingName = new legacySass.types.String('wrong-setting');
+                const unit = new legacySass.types.String('px');
 
                 expect(stencilNumber(settingName, unit).getValue()).to.equal(0);
 
@@ -177,8 +212,8 @@ describe('Stencil-Styles Plugin', () => {
             });
 
             it('should return 0 if passed a wrong setting value', done => {
-                const settingName = new Sass.types.String('google-font-wrong-size');
-                const unit = new Sass.types.String('px');
+                const settingName = new legacySass.types.String('google-font-wrong-size');
+                const unit = new legacySass.types.String('px');
 
                 expect(stencilNumber(settingName, unit).getValue()).to.equal(0);
 
@@ -186,10 +221,10 @@ describe('Stencil-Styles Plugin', () => {
             });
 
             it('should return a Sass.types.Number', done => {
-                const settingName = new Sass.types.String('google-font-size');
-                const unit = new Sass.types.String('px');
+                const settingName = new legacySass.types.String('google-font-size');
+                const unit = new legacySass.types.String('px');
 
-                expect(stencilNumber(settingName, unit) instanceof Sass.types.Number).to.equal(true);
+                expect(stencilNumber(settingName, unit) instanceof legacySass.types.Number).to.equal(true);
 
                 done();
             });
@@ -205,8 +240,8 @@ describe('Stencil-Styles Plugin', () => {
             });
 
             it('should return the expected string value', done => {
-                const image = new Sass.types.String('img-url');
-                const size = new Sass.types.String('img-size');
+                const image = new legacySass.types.String('img-url');
+                const size = new legacySass.types.String('img-size');
 
                 expect(stencilImage(image, size).getValue()).to.equal('stencil/1000x400/example.jpg');
 
@@ -214,37 +249,37 @@ describe('Stencil-Styles Plugin', () => {
             });
 
             it('should return null if passed an empty image url value', done => {
-                const image = new Sass.types.String('img-url-empty');
-                const size = new Sass.types.String('img-size');
+                const image = new legacySass.types.String('img-url-empty');
+                const size = new legacySass.types.String('img-size');
 
-                expect(stencilImage(image, size)).to.equal(Sass.NULL);
+                expect(stencilImage(image, size)).to.equal(legacySass.NULL);
 
                 done();
             });
 
             it('should return null if passed a wrong image url value', done => {
-                const image = new Sass.types.String('img-url-wrong--format');
-                const size = new Sass.types.String('img-size');
+                const image = new legacySass.types.String('img-url-wrong--format');
+                const size = new legacySass.types.String('img-size');
 
-                expect(stencilImage(image, size)).to.equal(Sass.NULL);
+                expect(stencilImage(image, size)).to.equal(legacySass.NULL);
 
                 done();
             });
 
             it('should return null if passed a wrong image dimension value', done => {
-                const image = new Sass.types.String('img-url');
-                const size = new Sass.types.String('img-size-wrong--format');
+                const image = new legacySass.types.String('img-url');
+                const size = new legacySass.types.String('img-size-wrong--format');
 
-                expect(stencilImage(image, size)).to.equal(Sass.NULL);
+                expect(stencilImage(image, size)).to.equal(legacySass.NULL);
 
                 done();
             });
 
             it('should return a Sass.types.String', done => {
-                const image = new Sass.types.String('img-url');
-                const size = new Sass.types.String('img-size');
+                const image = new legacySass.types.String('img-url');
+                const size = new legacySass.types.String('img-size');
 
-                expect(stencilImage(image, size) instanceof Sass.types.String).to.equal(true);
+                expect(stencilImage(image, size) instanceof legacySass.types.String).to.equal(true);
 
                 done();
             });
@@ -390,7 +425,7 @@ describe('Stencil-Styles Plugin', () => {
         it('should return a typeof Sass.NULL if family / weight is empty', done => {
             const result = stencilStyles.defaultFontParser(undefined, 'family');
 
-            expect(result instanceof Sass.types.Null).to.equal(true);
+            expect(result instanceof legacySass.types.Null).to.equal(true);
 
             done();
         });
