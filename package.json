@@ -23,6 +23,7 @@
     "@bigcommerce/node-sass": "git://github.com/bigcommerce-labs/node-sass.git#v3.4.4",
     "autoprefixer": "^6.7.3",
     "lodash": "^3.10.1",
+    "node-sass": "^4.12.0",
     "postcss": "^5.2.14"
   },
   "devDependencies": {
