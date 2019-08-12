@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint && npm run run-tests",
     "lint": "eslint .",
-    "run-tests": "lab -t 85 -e 'development'",
+    "run-tests": "lab -t 85 -e 'development' --ignore SharedArrayBuffer,Atomics,Base64",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "repository": {
@@ -21,14 +21,17 @@
   "homepage": "https://github.com/bigcommerce/stencil-styles#readme",
   "dependencies": {
     "@bigcommerce/node-sass": "git://github.com/bigcommerce-labs/node-sass.git#v3.4.4",
-    "autoprefixer": "^6.7.3",
+    "autoprefixer": "^6.7.7",
     "lodash": "^3.10.1",
-    "postcss": "^5.2.14"
+    "postcss": "^5.2.17"
   },
   "devDependencies": {
     "code": "^4.0.0",
     "eslint": "^3.15.0",
     "lab": "^13.1.0",
     "sinon": "^1.14.1"
+  },
+  "engines": {
+    "node": ">=8 <10"
   }
 }
