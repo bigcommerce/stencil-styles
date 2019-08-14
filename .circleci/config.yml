@@ -1,0 +1,21 @@
+version: 2.1
+description: "stencil styles unit/ci build pipeline"
+
+orbs:
+  ci: bigcommerce/internal@volatile
+  node: bigcommerce/internal-node@volatile
+
+job_defaults: &job_defaults
+  e:
+    name: node/node
+    node-version: "8"
+
+workflows:
+  version: 2
+  full:
+    jobs:
+      - node/npm-unit:
+          <<: *job_defaults
+      - ci/notify-success:
+          requires:
+            - node/npm-unit
