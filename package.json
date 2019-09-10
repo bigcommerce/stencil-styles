@@ -9,6 +9,9 @@
     "run-tests": "lab -t 85 -e 'development'",
     "test-cov-html": "lab -r html -o coverage.html"
   },
+  "engines": {
+    "node": ">= 6.0.0 <13.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/bigcommerce/stencil-styles.git"
@@ -20,7 +23,7 @@
   },
   "homepage": "https://github.com/bigcommerce/stencil-styles#readme",
   "dependencies": {
-    "@bigcommerce/node-sass": "git://github.com/bigcommerce-labs/node-sass.git#v3.4.5",
+    "@bigcommerce/node-sass": "git://github.com/bigcommerce-labs/node-sass.git#v3.5.0",
     "autoprefixer": "^6.7.3",
     "lodash": "^3.10.1",
     "postcss": "^5.2.14"
