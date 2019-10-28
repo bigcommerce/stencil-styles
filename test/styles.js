@@ -158,12 +158,22 @@ describe('Stencil-Styles Plugin', () => {
                 done();
             });
 
-            it('should return the expected number and unit value', done => {
+            it('should return the expected for flat key', done => {
                 const settingName = new Sass.types.String('google-font-size');
                 const unit = new Sass.types.String('em');
 
                 expect(stencilNumber(settingName, unit).getValue()).to.equal(14);
                 expect(stencilNumber(settingName, unit).getUnit()).to.equal('em');
+
+                done();
+            });
+
+            it('should return the expected for nested key', done => {
+                const settingName = new Sass.types.String('global.h1.font-size.value');
+                const unit = new Sass.types.String('rem');
+
+                expect(stencilNumber(settingName, unit).getValue()).to.equal(16);
+                expect(stencilNumber(settingName, unit).getUnit()).to.equal('rem');
 
                 done();
             });
