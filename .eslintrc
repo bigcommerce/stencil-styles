@@ -3,9 +3,6 @@
     "ecmaVersion": 6,
     "sourceType": "module"
   },
-  "ecmaFeatures": {
-    "modules": true
-  },
   "env": {
     "node": true
   },
