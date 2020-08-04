@@ -1,10 +1,7 @@
 {
   "parserOptions": {
     "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "modules": true
-    }
+    "sourceType": "module"
   },
   "env": {
     "node": true
