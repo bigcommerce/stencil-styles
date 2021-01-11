@@ -10,7 +10,7 @@
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
-    "node": ">= 6.0.0 <13.0.0"
+    "node": ">= 10.0.0 <15.0.0"
   },
   "repository": {
     "type": "git",
