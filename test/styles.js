@@ -5,7 +5,7 @@ const Code = require('@hapi/code');
 const Os = require('os');
 const Lab = require('@hapi/lab');
 const sinon = require('sinon');
-const Sass = require('@bigcommerce/node-sass');
+const Sass = require('sass');
 const StencilStyles = require('../lib/styles');
 const lab = exports.lab = Lab.script();
 const afterEach = lab.afterEach;
@@ -38,6 +38,7 @@ describe('Stencil-Styles Plugin', () => {
             themeSettings,
         };
         stencilStyles = new StencilStyles();
+        stencilStyles.compilers.active = stencilStyles.compilers.scss.primary;
     });
 
     describe('constructor', () => {
@@ -47,12 +48,10 @@ describe('Stencil-Styles Plugin', () => {
     });
 
     describe('autoPrefix', () => {
-        // TODO: Uncomment when no longer supporting Node 6,7 or update
-        // it('should add vendor prefixes to css rules', () => {
-        //     const prefixedCss = stencilStyles.autoPrefix('a { transform: scale(0.5); }', {});
-        //     expect(prefixedCss).to.contain(['-webkit-transform']);
-        //     done()
-        // });
+        it('should add vendor prefixes to css rules', () => {
+            const prefixedCss = stencilStyles.autoPrefix('a { transform: scale(0.5); display: flex; }');
+            expect(prefixedCss).to.contain(['-ms-flexbox']);
+        });
 
         it('should return an empty string if input is not a string', () => {
             expect(stencilStyles.autoPrefix(null)).to.be.equal('');
@@ -67,19 +66,17 @@ describe('Stencil-Styles Plugin', () => {
     });
 
     describe('compileCss()', () => {
-
         describe('when compilations succeed', () => {
             let callback;
             beforeEach(() => {
                 callback = sinon.spy();
-                sinon.spy(stencilStyles, 'scssCompiler');
+                sinon.spy(stencilStyles, 'compileScss');
 
                 stencilStyles.compileCss('scss', options, callback);
-
             });
 
             it('should call the scss compiler based on the compiler parameter', () => {
-                expect(stencilStyles.scssCompiler.calledOnce).to.equal(true);
+                expect(stencilStyles.compileScss.calledOnce).to.equal(true);
             });
 
             it('should call the callback passed in once compilation is complete', () => {
@@ -91,7 +88,7 @@ describe('Stencil-Styles Plugin', () => {
             });
 
             afterEach(() => {
-                stencilStyles.scssCompiler.restore();
+                stencilStyles.compileScss.restore();
             });
         });
 
