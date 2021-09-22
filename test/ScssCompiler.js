@@ -131,6 +131,7 @@ describe('ScssCompiler', () => {
                 fiber: Fiber,
                 functions: scssCompiler.getScssFunctions(compilerOptions.themeSettings),
                 importer: scssCompiler.scssImporter.bind(scssCompiler),
+                quietDeps: true,
             };
 
             await scssCompiler.compile(compilerOptions);

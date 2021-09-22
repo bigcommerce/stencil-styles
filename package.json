@@ -28,7 +28,7 @@
     "fibers": "^5.0.0",
     "lodash": "4.17.19",
     "postcss": "^5.2.14",
-    "sass": "~1.32.7"
+    "sass": "^1.42.0"
   },
   "devDependencies": {
     "@hapi/code": "^8.0.2",
