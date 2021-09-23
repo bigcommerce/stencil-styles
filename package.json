@@ -22,6 +22,11 @@
     "url": "https://github.com/bigcommerce/stencil-styles/issues"
   },
   "homepage": "https://github.com/bigcommerce/stencil-styles#readme",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib/"
+  ],
   "dependencies": {
     "@bigcommerce/node-sass": "https://git@github.com/bigcommerce-labs/node-sass.git#v3.5.0",
     "autoprefixer": "^6.7.3",
