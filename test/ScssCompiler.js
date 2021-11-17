@@ -3,7 +3,6 @@ const Os = require('os');
 const Lab = require('@hapi/lab');
 const sinon = require('sinon');
 const nodeSassFork = require('@bigcommerce/node-sass');
-const dartSass = require('sass');
 const Fiber = require('fibers');
 const ScssCompiler = require("../lib/ScssCompiler");
 const themeSettingsMock = require('./mocks/settings.json');
@@ -22,10 +21,6 @@ describe('ScssCompiler', () => {
     });
     const getPrimaryEngineStub = (errorMock = null, resultMock = getRenderResultMock()) => ({
         render: sinon.stub().yields(errorMock, resultMock),
-        types: dartSass.types,
-    });
-    const getFallbackEngineStub = (errorMock = null, resultMock = getRenderResultMock()) => ({
-        render: sinon.stub().yields(errorMock, resultMock),
         types: nodeSassFork.types,
     });
     let getLoggerStub = () => ({
@@ -36,37 +31,17 @@ describe('ScssCompiler', () => {
         [osPath('/mock/path2.scss')]: 'color: #000',
         [osPath('/mock/path3.scss')]: 'color: #aaa',
     });
-    const createScssCompiler = ({
-        logger: passedLogger,
-        engines: passedEngines = {},
-    } = {}) => {
-        const passedArgs = {
-            logger: passedLogger || getLoggerStub(),
-            engines: {
-                primary: getPrimaryEngineStub(),
-                fallback: getFallbackEngineStub(),
-                ...passedEngines,
-            },
-        };
-        return {
-            passedArgs,
-            scssCompiler: new ScssCompiler(passedArgs.logger, passedArgs.engines),
-        };
+    const createScssCompiler = (logger = getLoggerStub()) => {
+        const scssCompiler = new ScssCompiler(logger);
+        scssCompiler.engine = getPrimaryEngineStub();
+        return scssCompiler;
     };
 
     describe('constructor', () => {
-        it('should use default engines if they weren\'t passed through constructor', () => {
-            const scssCompiler = new ScssCompiler(getLoggerStub());
+        it('should activate scss engine', () => {
+            const scssCompiler = createScssCompiler();
 
-            expect([...Object.keys(scssCompiler.engines)]).to.be.equal(['primary', 'fallback', 'active']);
-            expect(scssCompiler.engines.primary).to.be.equal(dartSass);
-            expect(scssCompiler.engines.fallback).to.be.equal(nodeSassFork);
-        });
-
-        it('should activate primary engine', () => {
-            const { scssCompiler } = createScssCompiler();
-
-            expect(scssCompiler.engines.active).to.be.equal(scssCompiler.engines.primary);
+            expect(scssCompiler.engine).to.not.be.null;
         });
     });
 
@@ -80,7 +55,7 @@ describe('ScssCompiler', () => {
         };
 
         it('should throw an error when we try to reuse the instance for different compilations', async () => {
-            const { scssCompiler } = createScssCompiler()
+            const scssCompiler = createScssCompiler();
 
             const options = getOptionsMock();
             await scssCompiler.compile(options);
@@ -89,17 +64,17 @@ describe('ScssCompiler', () => {
         });
 
         it('should reset this.files value based on options.files', async () => {
-            const { scssCompiler } = createScssCompiler()
+            const scssCompiler = createScssCompiler();
             scssCompiler.files = {};
 
             const options = getOptionsMock();
             await scssCompiler.compile(options);
 
-            expect(scssCompiler.files).to.be.equal(options.files);
+            expect(scssCompiler.files).to.be.equal({});
         });
 
         it('should reset this.files value with an empty object when options.files is empty', async () => {
-            const { scssCompiler } = createScssCompiler()
+            const scssCompiler = createScssCompiler();
             scssCompiler.files = {
                 'a.scss': 'a { color: blue; }',
             };
@@ -111,16 +86,17 @@ describe('ScssCompiler', () => {
             expect(scssCompiler.files).to.be.equal({});
         });
 
-        it('should activate the primary engine on the first try', async () => {
-            const { scssCompiler } = createScssCompiler()
+        it('should activate the engine on the first try', async () => {
+            const scssCompiler = createScssCompiler();
+            scssCompiler.activateNodeSassForkEngine();
 
             await scssCompiler.compile(getOptionsMock());
 
-            expect(scssCompiler.engines.active).to.be.equal(scssCompiler.engines.primary);
+            expect(scssCompiler.engine.types).to.be.equal(nodeSassFork.types);
         });
 
-        it('should call the primary engine render with proper options on the first try', async () => {
-            const { scssCompiler } = createScssCompiler()
+        it('should call the engine render with proper options on the first try', async () => {
+            const scssCompiler = createScssCompiler();
             const compilerOptions = getOptionsMock();
             const expectedEngineOptions = {
                 data: compilerOptions.data,
@@ -136,81 +112,24 @@ describe('ScssCompiler', () => {
 
             await scssCompiler.compile(compilerOptions);
 
-            expect(scssCompiler.engines.primary.render.calledOnce).to.equal(true);
-            expect(scssCompiler.engines.primary.render.lastCall.args.length).to.equal(2);
-            expect(scssCompiler.engines.primary.render.lastCall.args[0]).to.equal(expectedEngineOptions);
-            expect(scssCompiler.engines.primary.render.lastCall.args[1]).to.be.a.function();
+            expect(scssCompiler.engine.render.calledOnce).to.equal(true);
+            expect(scssCompiler.engine.render.lastCall.args.length).to.equal(2);
+            expect(scssCompiler.engine.render.lastCall.args[0]).to.equal(expectedEngineOptions);
+            expect(scssCompiler.engine.render.lastCall.args[1]).to.be.a.function();
         });
 
         it('should return the compiled css from the primary engine when it finishes successfully', async () => {
-            const { scssCompiler } = createScssCompiler()
+            const scssCompiler = createScssCompiler()
 
             const result = await scssCompiler.compile(getOptionsMock());
 
             expect(result).to.equal(getRenderResultMock().css);
         });
-
-        describe('when the primary engine fails', () => {
-            it('should log the fail', async () => {
-                const error = new Error('oops');
-                const loggerStub = getLoggerStub();
-                const { scssCompiler } = createScssCompiler({
-                    logger: loggerStub,
-                    engines: {
-                        primary: getPrimaryEngineStub(error),
-                    },
-                })
-
-                await scssCompiler.compile(getOptionsMock());
-
-                expect(loggerStub.error.calledOnce).to.equal(true);
-                expect(loggerStub.error.lastCall.args.length).to.equal(1);
-                expect(loggerStub.error.lastCall.args[0]).to.contain(error.message);
-            });
-
-            it('should activate the fallback engine', async () => {
-                const { scssCompiler } = createScssCompiler({
-                    engines: {
-                        primary: getPrimaryEngineStub(new Error('oops')),
-                    },
-                })
-
-                await scssCompiler.compile(getOptionsMock());
-
-                expect(scssCompiler.engines.active).to.be.equal(scssCompiler.engines.fallback);
-            });
-
-            it('should return the compiled css from the fallback engine when it finishes successfully', async () => {
-                const renderResultMock = getRenderResultMock();
-                const { scssCompiler } = createScssCompiler({
-                    engines: {
-                        primary: getPrimaryEngineStub(new Error('oops')),
-                        fallback: getFallbackEngineStub(null, renderResultMock),
-                    },
-                });
-
-                const compilationResult = await scssCompiler.compile(getOptionsMock());
-
-                expect(compilationResult).to.equal(renderResultMock.css);
-            });
-
-            it('should pass on the thrown error from the fallback engine', async () => {
-                const fallBackEngineError = new Error('Fallback Engine Error');
-                const { scssCompiler } = createScssCompiler({
-                    engines: {
-                        primary: getPrimaryEngineStub(new Error('Primary Engine Error')),
-                        fallback: getFallbackEngineStub(fallBackEngineError),
-                    },
-                });
-
-                await expect(scssCompiler.compile(getOptionsMock())).to.reject(Error, fallBackEngineError.message);
-            });
-        });
     });
 
     describe('getScssFunctions', () => {
         it('should return an array with all required functions', () => {
-            const { scssCompiler } = createScssCompiler()
+            const scssCompiler = createScssCompiler()
 
             const result = scssCompiler.getScssFunctions(themeSettingsMock);
 
@@ -230,9 +149,9 @@ describe('ScssCompiler', () => {
             let saasTypes;
 
             beforeEach(() => {
-                const { scssCompiler } = createScssCompiler()
+                const scssCompiler = createScssCompiler()
                 stencilNumber = scssCompiler.getScssFunctions(themeSettingsMock)['stencilNumber($name, $unit: px)'];
-                saasTypes = scssCompiler.engines.primary.types;
+                saasTypes = scssCompiler.engine.types;
             });
 
             it('should return the expected for flat key', () => {
@@ -278,9 +197,9 @@ describe('ScssCompiler', () => {
             let saasTypes;
 
             beforeEach(() => {
-                const { scssCompiler } = createScssCompiler()
+                const scssCompiler = createScssCompiler()
                 stencilImage = scssCompiler.getScssFunctions(themeSettingsMock)['stencilImage($image, $size)'];
-                saasTypes = scssCompiler.engines.active.types;
+                saasTypes = scssCompiler.engine.types;
             });
 
             it('should return the expected string value', () => {
@@ -324,7 +243,7 @@ describe('ScssCompiler', () => {
         let scssCompiler;
 
         beforeEach(() => {
-            ({ scssCompiler } = createScssCompiler());
+            scssCompiler = createScssCompiler();
         });
 
         it('should return an error if files do not exist', () => {
@@ -376,7 +295,7 @@ describe('ScssCompiler', () => {
         let scssCompiler;
 
         beforeEach(() => {
-            ({ scssCompiler } = createScssCompiler());
+            scssCompiler = createScssCompiler();
             sinon.spy(scssCompiler, 'googleFontParser');
             sinon.spy(scssCompiler, 'defaultFontParser');
         });
@@ -399,7 +318,7 @@ describe('ScssCompiler', () => {
         let scssCompiler;
 
         beforeEach(() => {
-            ({ scssCompiler } = createScssCompiler());
+            scssCompiler = createScssCompiler();
             sinon.spy(scssCompiler, 'defaultFontParser');
         });
 
@@ -415,7 +334,7 @@ describe('ScssCompiler', () => {
         let scssCompiler;
 
         beforeEach(() => {
-            ({ scssCompiler } = createScssCompiler());
+            scssCompiler = createScssCompiler();
         });
 
         it('should return the font family name', () => {
@@ -439,7 +358,7 @@ describe('ScssCompiler', () => {
         it('should return a typeof Sass.NULL if family / weight is empty', () => {
             const result = scssCompiler.defaultFontParser(undefined, 'family');
 
-            const saasTypes = scssCompiler.engines.active.types;
+            const saasTypes = scssCompiler.engine.types;
             expect(result).to.equal(saasTypes.Null.NULL);
         });
     });
