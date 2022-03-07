@@ -48,6 +48,7 @@ describe('ScssCompiler', () => {
     describe('compile', () => {
         const getOptionsMock = () => {
             return {
+                data: '1',
                 files: getCompilerFilesMock(),
                 autoprefixerOptions: {},
                 themeSetting: { ...themeSettingsMock },
@@ -86,13 +87,11 @@ describe('ScssCompiler', () => {
             expect(scssCompiler.files).to.be.equal({});
         });
 
-        it('should activate the engine on the first try', async () => {
+        it('should throw an error with invalid css provided', async () => {
             const scssCompiler = createScssCompiler();
             scssCompiler.activateNodeSassForkEngine();
 
-            await scssCompiler.compile(getOptionsMock());
-
-            expect(scssCompiler.engine.types).to.be.equal(nodeSassFork.types);
+            await expect(scssCompiler.compile(getOptionsMock())).to.reject(Error, /invalid css/i);
         });
 
         it('should call the engine render with proper options on the first try', async () => {
