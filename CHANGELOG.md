@@ -1,3 +1,11 @@
+### 2.2.1 (2022-03-09)
+
+-   STRF-9440 Don't catch an error, let upper level to handle it ([68](https://github.com/bigcommerce/stencil-styles/pull/68))
+
+### 2.1.1 (2022-01-11)
+
+-   STRF-9491 Importing only specific sass library ([61](https://github.com/bigcommerce/stencil-styles/pull/61))
+
 ### 2.1.0 (2021-09-17)
 
 -   STRF-9357 Upgrade dart sass to latest version to suppress deprecation warnings ([59](https://github.com/bigcommerce/stencil-styles/pull/59))
