@@ -1,3 +1,6 @@
+### 3.0.0 (2022-04-11)
+
+-   Support Node 14 and drop node 10 ([73](https://github.com/bigcommerce/stencil-styles/pull/73))
 ### 2.2.1 (2022-03-09)
 
 -   STRF-9440 Don't catch an error, let upper level to handle it ([68](https://github.com/bigcommerce/stencil-styles/pull/68))
