@@ -30,7 +30,7 @@
   "dependencies": {
     "@bigcommerce/node-sass": "https://git@github.com/bigcommerce-labs/node-sass.git#34dbe47ad10c908af37f77681f33d1759ea28575",
     "autoprefixer": "^6.7.3",
-    "fibers": "^5.0.0",
+    "fibers": "^5.0.1",
     "lodash": "4.17.19",
     "node-sass": "^6.0.1",
     "postcss": "^5.2.14",
