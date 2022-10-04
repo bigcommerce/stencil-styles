@@ -10,7 +10,7 @@
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
-    "node": ">=12.0.0 <15.0.0"
+    "node": ">=14.0.0 <15.0.0"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "lib/"
   ],
   "dependencies": {
-    "@bigcommerce/node-sass": "https://git@github.com/bigcommerce-labs/node-sass.git#34dbe47ad10c908af37f77681f33d1759ea28575",
+    "@bigcommerce/node-sass": "https://git@github.com/bigcommerce-labs/node-sass.git#6f80dfbf12cfd456b6aee1573e4fdf73d5bc282e",
     "autoprefixer": "^6.7.3",
     "fibers": "^5.0.0",
     "lodash": "4.17.19",
