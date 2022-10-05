@@ -1,4 +1,4 @@
-### Draft
+### 4.0.0  (2022-10-05)
 
 -   Drop Node 12 Support ([76](https://github.com/bigcommerce/stencil-styles/pull/76))
 -   Fix npm 8 install issue ([76](https://github.com/bigcommerce/stencil-styles/pull/76))
