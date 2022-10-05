@@ -1,3 +1,8 @@
+### Draft
+
+-   Drop Node 12 Support ([76](https://github.com/bigcommerce/stencil-styles/pull/76))
+-   Fix npm 8 install issue ([76](https://github.com/bigcommerce/stencil-styles/pull/76))
+
 ### 3.0.0 (2022-04-11)
 
 -   Support Node 14 and drop node 10 ([73](https://github.com/bigcommerce/stencil-styles/pull/73))
