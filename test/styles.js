@@ -51,11 +51,6 @@ describe('StencilStyles Plugin', () => {
     });
 
     describe('autoPrefix', () => {
-        it('should add vendor prefixes to css rules', () => {
-            const prefixedCss = stencilStyles.autoPrefix('a { transform: scale(0.5); display: flex; }');
-            expect(prefixedCss).to.contain(['-ms-flexbox']);
-        });
-
         it('should return an empty string if input is not a string', () => {
             expect(stencilStyles.autoPrefix(null)).to.be.equal('');
             expect(stencilStyles.autoPrefix({})).to.be.equal('');

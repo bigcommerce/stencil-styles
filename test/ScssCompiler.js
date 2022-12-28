@@ -2,8 +2,7 @@ const Code = require('@hapi/code');
 const Os = require('os');
 const Lab = require('@hapi/lab');
 const sinon = require('sinon');
-const nodeSassFork = require('@bigcommerce/node-sass');
-const Fiber = require('fibers');
+const nodeSass = require('node-sass');
 const ScssCompiler = require("../lib/ScssCompiler");
 const themeSettingsMock = require('./mocks/settings.json');
 
@@ -21,7 +20,7 @@ describe('ScssCompiler', () => {
     });
     const getPrimaryEngineStub = (errorMock = null, resultMock = getRenderResultMock()) => ({
         render: sinon.stub().yields(errorMock, resultMock),
-        types: nodeSassFork.types,
+        types: nodeSass.types,
     });
     let getLoggerStub = () => ({
         error: sinon.stub(),
@@ -89,7 +88,7 @@ describe('ScssCompiler', () => {
 
         it('should throw an error with invalid css provided', async () => {
             const scssCompiler = createScssCompiler();
-            scssCompiler.activateNodeSassForkEngine();
+            scssCompiler.activateNodeSassEngine();
 
             await expect(scssCompiler.compile(getOptionsMock())).to.reject(Error, /invalid css/i);
         });
@@ -103,7 +102,6 @@ describe('ScssCompiler', () => {
                 files: compilerOptions.files,
                 sourceMap: compilerOptions.sourceMap,
                 sourceMapEmbed: compilerOptions.sourceMap,
-                fiber: Fiber,
                 functions: scssCompiler.getScssFunctions(compilerOptions.themeSettings),
                 importer: scssCompiler.scssImporter.bind(scssCompiler),
                 quietDeps: true,

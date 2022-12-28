@@ -6,11 +6,11 @@
   "scripts": {
     "test": "npm run lint && npm run run-tests",
     "lint": "eslint .",
-    "run-tests": "lab -t 85 -e 'development' --ignore BigUint64Array,BigInt64Array,BigInt,URL,URLSearchParams,Base64,TextEncoder,TextDecoder,queueMicrotask,Base64",
+    "run-tests": "lab -t 85 -e 'development' --ignore BigUint64Array,BigInt64Array,BigInt,URL,URLSearchParams,Base64,TextEncoder,TextDecoder,queueMicrotask,Base64,AggregateError,atob,btoa,AbortController,AbortSignal,EventTarget,Event,MessageChannel,MessagePort,MessageEvent,performance",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
-    "node": ">=14.0.0 <15.0.0"
+    "node": ">=16.0.0 <17.0.0"
   },
   "repository": {
     "type": "git",
@@ -28,13 +28,11 @@
     "lib/"
   ],
   "dependencies": {
-    "@bigcommerce/node-sass": "https://git@github.com/bigcommerce-labs/node-sass.git#6f80dfbf12cfd456b6aee1573e4fdf73d5bc282e",
-    "autoprefixer": "^6.7.3",
-    "fibers": "^5.0.0",
-    "lodash": "4.17.19",
-    "node-sass": "^6.0.1",
-    "postcss": "^5.2.14",
-    "sass": "^1.42.0"
+    "autoprefixer": "^10.4.13",
+    "lodash": "^4.17.21",
+    "node-sass": "^8.0.0",
+    "postcss": "^8.4.20",
+    "sass": "^1.57.1"
   },
   "devDependencies": {
     "@hapi/code": "^8.0.2",
