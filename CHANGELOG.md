@@ -1,3 +1,7 @@
+### 5.0.0  (2022-12-30)
+
+-   Drop Node 14 Support and add Node 16 Support  ([79](https://github.com/bigcommerce/stencil-styles/pull/79))
+
 ### 4.0.0  (2022-10-05)
 
 -   Drop Node 12 Support ([76](https://github.com/bigcommerce/stencil-styles/pull/76))
