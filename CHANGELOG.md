@@ -1,4 +1,4 @@
-### draft
+### 5.1.0  (2022-01-20)
 
 -   Node 18 Support  ([81](https://github.com/bigcommerce/stencil-styles/pull/81))
 
