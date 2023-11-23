@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>page2.html</title>
+    {{head.scripts}}
+    {{ stylesheet     "assets/css/test.css"    }}
+    /* {{ stylesheet  "assets/css/commented.css" }} */
+</head>
+<body>
+    <h1>{{theme_settings.customizable_title}}</h1>
+    {{> components/b}}
+    {{footer.scripts}}
+</body>
+</html>
