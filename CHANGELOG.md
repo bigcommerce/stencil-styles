@@ -1,3 +1,7 @@
+### 5.2.0  (2023-11-24)
+
+-   feat(STRF-11419): Create Stylesheets resolver to get css files by stylesheet helper  ([87](https://github.com/bigcommerce/stencil-styles/pull/87))
+
 ### 5.1.0  (2022-01-20)
 
 -   Node 18 Support  ([81](https://github.com/bigcommerce/stencil-styles/pull/81))
