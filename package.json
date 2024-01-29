@@ -6,11 +6,11 @@
   "scripts": {
     "test": "npm run lint && npm run run-tests",
     "lint": "eslint .",
-    "run-tests": "lab -t 85 -e 'development' --ignore BigUint64Array,BigInt64Array,BigInt,URL,URLSearchParams,Base64,TextEncoder,TextDecoder,queueMicrotask,Base64,AggregateError,atob,btoa,AbortController,AbortSignal,EventTarget,Event,MessageChannel,MessagePort,MessageEvent,performance",
+    "run-tests": "lab -t 85 -e 'development' -l",
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
-    "node": ">=16.0.0 <19.0.0"
+    "node": ">=16.0.0"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "autoprefixer": "^10.4.13",
     "cheerio": "^1.0.0-rc.12",
     "lodash": "^4.17.21",
-    "node-sass": "^8.0.0",
+    "node-sass": "^9.0.0",
     "postcss": "^8.4.20",
     "recursive-readdir": "^2.2.3",
     "sass": "^1.58.0"
