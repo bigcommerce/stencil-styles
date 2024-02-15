@@ -1,10 +1,15 @@
-### 5.2.0  (2023-11-24)
+### 5.3.1  (2024-02-15)
 
--   feat: bump node-sass version ([90](https://github.com/bigcommerce/stencil-styles/pull/90))
+-   fix: STRF-11740 track commented out stylesheet helpers  ([92](https://github.com/bigcommerce/stencil-styles/pull/92))
 
 ### 5.3.0  (2024-01-29)
 
 -   feat(STRF-11419): Create Stylesheets resolver to get css files by stylesheet helper  ([87](https://github.com/bigcommerce/stencil-styles/pull/87))
+
+
+### 5.2.0  (2023-11-24)
+
+-   feat: bump node-sass version ([90](https://github.com/bigcommerce/stencil-styles/pull/90))
 
 ### 5.1.0  (2022-01-20)
 
