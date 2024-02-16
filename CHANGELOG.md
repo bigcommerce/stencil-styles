@@ -1,3 +1,7 @@
+### 5.3.2  (2024-02-16)
+
+-   fix: STRF-11740 Rewrote logic for retrieving stylesheets  ([94](https://github.com/bigcommerce/stencil-styles/pull/94))
+
 ### 5.3.1  (2024-02-15)
 
 -   fix: STRF-11740 track commented out stylesheet helpers  ([92](https://github.com/bigcommerce/stencil-styles/pull/92))
