@@ -1,3 +1,7 @@
+### 5.3.3  (2024-02-19)
+
+-   fix: null and duplicated cases for css resolver ([97](https://github.com/bigcommerce/stencil-styles/pull/97))
+
 ### 5.3.2  (2024-02-16)
 
 -   fix: STRF-11740 Rewrote logic for retrieving stylesheets  ([94](https://github.com/bigcommerce/stencil-styles/pull/94))
