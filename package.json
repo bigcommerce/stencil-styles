@@ -28,7 +28,7 @@
     "lib/"
   ],
   "dependencies": {
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.19",
     "cheerio": "^1.0.0-rc.12",
     "lodash": "^4.17.21",
     "node-sass": "^9.0.0",
