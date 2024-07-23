@@ -24,8 +24,16 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
+            - name: Install Python and build tools
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y python3 python3-distutils make g++
+
+
             - name: Install Dependencies
               run: npm ci
+              env:
+                PYTHON: /usr/bin/python3
 
             - name: Lint the code
               run: npm run lint
