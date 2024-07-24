@@ -29,8 +29,6 @@ jobs:
               with:
                 python-version: '3.10'
               run: npm ci
-              env:
-                PYTHON: /usr/bin/python3
 
             - name: Lint the code
               run: npm run lint
