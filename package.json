@@ -10,7 +10,7 @@
     "test-cov-html": "lab -r html -o coverage.html"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "lib/"
   ],
   "dependencies": {
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.20",
     "cheerio": "^1.0.0-rc.12",
     "lodash": "^4.17.21",
     "node-sass": "^9.0.0",
