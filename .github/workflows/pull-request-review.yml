@@ -10,12 +10,13 @@ jobs:
     build:
         strategy:
             matrix:
-                node: [16.x, 18.x, 20.x]
-                os: ['ubuntu-latest', 'windows-2019', 'macos-latest']
+                node: [20.x]
+                os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
 
         runs-on: ${{ matrix.os }}
 
         steps:
+
             - name: Checkout code
               uses: actions/checkout@v4
 
