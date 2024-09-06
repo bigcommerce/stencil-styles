@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/stencil-styles",
-  "version": "5.3.3",
+  "version": "6.0.0",
   "description": "Compiles SCSS for the Stencil Framework",
   "main": "lib/index.js",
   "scripts": {

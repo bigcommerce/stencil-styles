@@ -1,3 +1,7 @@
+### 6.0.0  (2024-02-19)
+
+-   feat: STRF-12387 Support Node 20, drop node 16 ([106](https://github.com/bigcommerce/stencil-styles/pull/106))
+
 ### 5.3.3  (2024-02-19)
 
 -   fix: null and duplicated cases for css resolver ([97](https://github.com/bigcommerce/stencil-styles/pull/97))
