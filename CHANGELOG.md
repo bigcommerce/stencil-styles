@@ -1,4 +1,8 @@
-### 6.0.0  (2024-02-19)
+### 6.0.1  (2024-09-06)
+
+-   fix: STRF-12387 Bump postcss and sinon ([108](https://github.com/bigcommerce/stencil-styles/pull/108))
+
+### 6.0.0  (2024-09-05)
 
 -   feat: STRF-12387 Support Node 20, drop node 16 ([106](https://github.com/bigcommerce/stencil-styles/pull/106))
 
