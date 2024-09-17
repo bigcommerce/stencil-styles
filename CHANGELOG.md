@@ -1,3 +1,7 @@
+### 6.1.1  (2024-09-17)
+
+-   feat: STRF-11834 Consolidate css assembling logic ([117](https://github.com/bigcommerce/stencil-styles/pull/117))
+
 ### 6.0.1  (2024-09-06)
 
 -   fix: STRF-12387 Bump postcss and sinon ([108](https://github.com/bigcommerce/stencil-styles/pull/108))
