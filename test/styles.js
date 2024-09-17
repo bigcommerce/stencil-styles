@@ -1,6 +1,8 @@
 const Code = require('@hapi/code');
 const Lab = require('@hapi/lab');
 const sinon = require('sinon');
+const path = require('path');
+const process = require('process');
 const StencilStyles = require('../lib/styles');
 const ScssCompiler = require('../lib/ScssCompiler');
 
@@ -60,6 +62,16 @@ describe('StencilStyles Plugin', () => {
         it('should return the input string if not valid css', () => {
             const notCss = 'this is not css';
             expect(stencilStyles.autoPrefix(notCss)).to.be.equal(notCss);
+            expect(stencilStyles.autoPrefix(notCss, {})).to.be.equal(notCss);
+            expect(stencilStyles.autoPrefix(Buffer.from(notCss))).to.be.equal(Buffer.from(notCss));
+        });
+
+        it('should return the autoprefixed css if valid css', () => {
+            const css = 'a { color: red; transition: color 0.3s; }';
+            const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions'] };
+            const expected = 'a { color: red; -webkit-transition: color 0.3s; transition: color 0.3s; }';
+
+            expect(stencilStyles.autoPrefix(css, autoprefixerOptions)).to.be.equal(expected);
         });
     });
 
@@ -116,6 +128,31 @@ describe('StencilStyles Plugin', () => {
                 await expect(stencilStyles.compileCss('scss', getOptionsMock()))
                     .to.reject(Error, errorMessage);
             });
+        });
+    });
+
+    describe('assemble', () => {
+        it('should call assemble with the provided arguments', async () => {
+            const cssFiles = 'theme.scss';
+            const absolutePath = path.join(
+                process.cwd(),
+                'test/mocks/themes/valid/assets/scss',
+            );
+            const type = 'scss';
+            const options = {};
+
+            const result = await stencilStyles.assembleCssFiles(cssFiles, absolutePath, type, options);
+            const expected = {
+                'theme.scss': '@import "tools/tools";\n@import "tools/onemore";\n\nh1 {\n    color: #0000AA;\n}\n\n$font: "Arial";',
+                'tools/tools.scss': '.tools {\n    color: red;\n}',
+                'tools/onemore.scss': '.underscore {\n    color: green;\n}',
+            };
+            if (process.platform === 'win32') {
+                Object.keys(expected).forEach((key) => {
+                    expected[key] = expected[key].replace(/\n/g, '\r\n');
+                });
+            }
+            expect(result).to.equal(expected);
         });
     });
 });
