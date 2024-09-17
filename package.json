@@ -39,7 +39,7 @@
     "upath": "^2.0.1"
   },
   "devDependencies": {
-    "@hapi/code": "^8.0.2",
+    "@hapi/code": "^9.0.3",
     "@hapi/lab": "^23.0.0",
     "eslint": "^7.20.0",
     "sinon": "^19.0.2"
