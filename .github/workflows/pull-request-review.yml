@@ -17,6 +17,8 @@ jobs:
 
         steps:
 
+            - name: Install python
+              uses: actions/setup-python@v5
             - name: Checkout code
               uses: actions/checkout@v4
 
