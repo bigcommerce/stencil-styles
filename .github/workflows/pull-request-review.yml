@@ -33,9 +33,7 @@ jobs:
 
             - name: Install Windows Build Tools
               if: startsWith(matrix.os, 'windows')
-              run: |
-                npm install -g windows-build-tools
-                npm config set msvs_version 2019
+              uses: microsoft/setup-msbuild@v1.1
 
             - name: Install Dependencies
               run: npm ci
