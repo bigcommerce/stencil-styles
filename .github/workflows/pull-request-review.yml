@@ -24,10 +24,22 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # - name: Set up Python
-            #   uses: actions/setup-python@v5
-            #   with:
-            #     python-version: '3.10'
+            - name: Set up Python
+              if: startsWith(matrix.os, 'windows')
+              id: py
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.10'
+
+            - name: Force npm to use this Python
+              if: startsWith(matrix.os, 'windows')
+              shell: pwsh
+              run: |
+                # setup-python exposes $env:PythonLocation
+                echo "npm_config_python=$env:PythonLocation\python.exe" | Out-File -FilePath $env:GITHUB_ENV -Append
+                npm config set python "$env:PythonLocation\python.exe"
+                python --version
+                npm config get python
 
             # - name: Pin node-gyp 10 on Windows
             #   if: startsWith(matrix.os, 'windows')
