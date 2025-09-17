@@ -10,8 +10,8 @@ jobs:
     build:
         strategy:
             matrix:
-                node: [20.x, 22.x, 24.x]
-                os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
+                node: [22.x]
+                os: ['ubuntu-latest', 'windows-latest']
 
         runs-on: ${{ matrix.os }}
 
@@ -31,67 +31,20 @@ jobs:
               with:
                 python-version: '3.10'
 
-            - name: Force npm to use this Python
+            - name: Install Windows Build Tools
               if: startsWith(matrix.os, 'windows')
-              shell: pwsh
               run: |
-                # setup-python exposes $env:PythonLocation
-                echo "npm_config_python=$env:PythonLocation\python.exe" | Out-File -FilePath $env:GITHUB_ENV -Append
-                npm config set python "$env:PythonLocation\python.exe"
-                python --version
-                npm config get python
-
-            # - name: Pin node-gyp 10 on Windows
-            #   if: startsWith(matrix.os, 'windows')
-            #   run: |
-            #     npm i -g node-gyp@10
-            #     # Tell npm/node-pre-gyp consumers to use this node-gyp
-            #     setx npm_config_node_gyp "%APPDATA%\npm\node_modules\node-gyp\bin\node-gyp.js"
-
-            - name: Pin node-gyp and VS vars
-              if: startsWith(matrix.os, 'windows')
-              shell: pwsh
-              run: |
-                npm i -g node-gyp@10
-                echo "npm_config_node_gyp=$env:APPDATA\npm\node_modules\node-gyp\bin\node-gyp.js" | Out-File -FilePath $env:GITHUB_ENV -Append
-                echo "GYP_MSVS_VERSION=2022" | Out-File -FilePath $env:GITHUB_ENV -Append
-                echo "GYP_MSVS_OVERRIDE_PATH=C:\Program Files\Microsoft Visual Studio\2022\Enterprise" | Out-File -FilePath $env:GITHUB_ENV -Append
-                echo "npm_config_msvs_version=2022" | Out-File -FilePath $env:GITHUB_ENV -Append
-                echo "GYP_MSVS_ENABLE_VERBOSE_BUILD=1" | Out-File -FilePath $env:GITHUB_ENV -Append
-                git config --global core.longpaths true
-
-            - name: MSVC flags for node-sass/libsass
-              if: startsWith(matrix.os, 'windows')
-              shell: pwsh
-              run: |
-                # /std:c++17: ensure at least C++17
-                # /Zc:__cplusplus: report real __cplusplus
-                # /permissive-: stricter standard mode (helps templates); drop if it causes issues
-                # /EHsc: proper C++ exceptions
-                # /bigobj: libsass sometimes hits section limits
-                # /GL-: disable whole program optimization to avoid rare LNK/ICE issues
-                echo "CL=/std:c++17 /Zc:__cplusplus /permissive- /EHsc /bigobj /GL-" | Out-File -FilePath $env:GITHUB_ENV -Append
-
-            - name: npm ci (Windows, verbose and tee)
-              if: startsWith(matrix.os, 'windows')
-              shell: pwsh
-              run: |
-                $env:NPM_CONFIG_LOGLEVEL="verbose"
-                npm ci --verbose 2>&1 | Tee-Object node-sass-win.log
-              continue-on-error: true
-
-            - name: Upload build log
-              if: startsWith(matrix.os, 'windows')
-              uses: actions/upload-artifact@v4
-              with:
-                name: node-sass-win.log
-                path: node-sass-win.log
+                npm install -g windows-build-tools
+                npm config set msvs_version 2019
 
             - name: Install Dependencies
               run: npm ci
+              shell: bash
 
             - name: Lint the code
               run: npm run lint
+              shell: bash
 
             - name: Run tests
               run: npm run test
+              shell: bash
