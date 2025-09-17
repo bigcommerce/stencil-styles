@@ -41,23 +41,23 @@ jobs:
                 python --version
                 npm config get python
 
-            # - name: Pin node-gyp 10 on Windows
-            #   if: startsWith(matrix.os, 'windows')
-            #   run: |
-            #     npm i -g node-gyp@10
-            #     # Tell npm/node-pre-gyp consumers to use this node-gyp
-            #     setx npm_config_node_gyp "%APPDATA%\npm\node_modules\node-gyp\bin\node-gyp.js"
+            - name: Pin node-gyp 10 on Windows
+              if: startsWith(matrix.os, 'windows')
+              run: |
+                npm i -g node-gyp@10
+                # Tell npm/node-pre-gyp consumers to use this node-gyp
+                setx npm_config_node_gyp "%APPDATA%\npm\node_modules\node-gyp\bin\node-gyp.js"
 
-            # - name: Force VS toolchain discovery (skip PowerShell)
-            #   if: startsWith(matrix.os, 'windows')
-            #   shell: pwsh
-            #   run: |
-            #     # Adjust this path if your runner uses Community or BuildTools
-            #     $vsPath = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
-            #     echo "GYP_MSVS_VERSION=2022"              | Out-File -FilePath $env:GITHUB_ENV -Append
-            #     echo "GYP_MSVS_OVERRIDE_PATH=$vsPath"     | Out-File -FilePath $env:GITHUB_ENV -Append
-            #     echo "npm_config_msvs_version=2022"       | Out-File -FilePath $env:GITHUB_ENV -Append
-            #     echo "npm_config_python=$((Get-Command python).Path)" | Out-File -FilePath $env:GITHUB_ENV -Append
+            - name: Force VS toolchain discovery (skip PowerShell)
+              if: startsWith(matrix.os, 'windows')
+              shell: pwsh
+              run: |
+                # Adjust this path if your runner uses Community or BuildTools
+                $vsPath = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise"
+                echo "GYP_MSVS_VERSION=2022"              | Out-File -FilePath $env:GITHUB_ENV -Append
+                echo "GYP_MSVS_OVERRIDE_PATH=$vsPath"     | Out-File -FilePath $env:GITHUB_ENV -Append
+                echo "npm_config_msvs_version=2022"       | Out-File -FilePath $env:GITHUB_ENV -Append
+                echo "npm_config_python=$((Get-Command python).Path)" | Out-File -FilePath $env:GITHUB_ENV -Append
 
 
             - name: Install Dependencies
