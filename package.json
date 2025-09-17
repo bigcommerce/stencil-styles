@@ -43,5 +43,8 @@
     "@hapi/lab": "^23.0.0",
     "eslint": "^7.20.0",
     "sinon": "^19.0.2"
+  },
+  "overrides": {
+    "node-gyp": "^11.0.0"
   }
 }
