@@ -31,16 +31,12 @@ jobs:
               with:
                 python-version: '3.10'
 
-            - name: Install Visual Studio Build Tools
-              if: startsWith(matrix.os, 'windows')
-              uses: microsoft/setup-msbuild@v1.1
-
-            - name: Install Windows Build Tools
+            - name: Configure npm for Windows
               if: startsWith(matrix.os, 'windows')
               run: |
-                npm install -g node-gyp
                 npm config set msvs_version 2019
                 npm config set python python
+                npm config set cache-min 86400
               shell: bash
 
             - name: Install Dependencies
