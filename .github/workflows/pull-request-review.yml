@@ -38,17 +38,18 @@ jobs:
             - name: Configure npm for Windows
               if: startsWith(matrix.os, 'windows')
               run: |
-                npm config set python python
                 npm config set cache-min 86400
               shell: bash
               env:
                 GYP_MSVS_VERSION: 2022
+                PYTHON: python
 
             - name: Install Dependencies
               run: npm ci
               shell: bash
               env:
                 GYP_MSVS_VERSION: 2022
+                PYTHON: python
 
             - name: Lint the code
               run: npm run lint
