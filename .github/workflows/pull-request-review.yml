@@ -42,7 +42,6 @@ jobs:
             - name: Configure node-gyp for Windows
               if: startsWith(matrix.os, 'windows')
               run: |
-                npm config set cache-min 86400
                 npm config set target_arch x64
                 npm config set target_platform win32
               shell: bash
