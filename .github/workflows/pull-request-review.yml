@@ -11,7 +11,7 @@ jobs:
         strategy:
             matrix:
                 node: [22.x]
-                os: ['ubuntu-latest', 'windows-latest']
+                os: ['ubuntu-latest', 'windows-2022']
 
         runs-on: ${{ matrix.os }}
 
@@ -31,10 +31,14 @@ jobs:
               with:
                 python-version: '3.10'
 
+            - name: Install Visual Studio Build Tools
+              if: startsWith(matrix.os, 'windows')
+              uses: microsoft/setup-msbuild@v1.1
+
             - name: Configure npm for Windows
               if: startsWith(matrix.os, 'windows')
               run: |
-                npm config set msvs_version 2019
+                npm config set msvs_version 2022
                 npm config set python python
                 npm config set cache-min 86400
               shell: bash
