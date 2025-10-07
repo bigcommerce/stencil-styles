@@ -32,7 +32,7 @@
     "autoprefixer": "^10.4.20",
     "cheerio": "^1.0.0-rc.12",
     "lodash": "^4.17.21",
-    "node-sass": "^9.0.0",
+    "node-sass": "git+ssh://git@github.com/bigcommerce-labs/node-sass.git",
     "postcss": "^8.4.45",
     "recursive-readdir": "^2.2.3",
     "sass": "^1.58.0",
@@ -43,8 +43,5 @@
     "@hapi/lab": "^23.0.0",
     "eslint": "^7.20.0",
     "sinon": "^19.0.2"
-  },
-  "overrides": {
-    "node-gyp": "^11.0.0"
   }
 }

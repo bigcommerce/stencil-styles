@@ -10,17 +10,10 @@ jobs:
     build:
         strategy:
             matrix:
-                node: [22.x]
+                node: [20.x, 22.x, 24.x]
                 os: ['ubuntu-latest', 'windows-latest']
 
         runs-on: ${{ matrix.os }}
-        
-        env:
-            GYP_MSVS_VERSION: 2019
-            _SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING: 1
-            _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS: 1
-            CXXFLAGS: "/std:c++14 /permissive-"
-            CFLAGS: "/std:c14"
 
         steps:
             - name: Checkout code
@@ -31,29 +24,16 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
-            # - name: Set up Python
-            #   if: startsWith(matrix.os, 'windows')
-            #   id: py
-            #   uses: actions/setup-python@v5
-            #   with:
-            #     python-version: '3.10'
-
-
-            - name: Configure node-gyp for Windows
-              if: startsWith(matrix.os, 'windows')
-              run: |
-                npm config set target_arch x64
-                npm config set target_platform win32
-              shell: bash
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: '3.10'
 
             - name: Install Dependencies
               run: npm ci
-              shell: bash
 
             - name: Lint the code
               run: npm run lint
-              shell: bash
 
             - name: Run tests
               run: npm run test
-              shell: bash
