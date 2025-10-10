@@ -1,3 +1,7 @@
+### 6.2.0  (2025-10-10)
+
+-   feat: STRF-13762 Enable node 22 and node 24 ([146](https://github.com/bigcommerce/stencil-styles/pull/146))
+
 ### 6.1.1  (2024-09-17)
 
 -   feat: STRF-11834 Consolidate css assembling logic ([117](https://github.com/bigcommerce/stencil-styles/pull/117))
