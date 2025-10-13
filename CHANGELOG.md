@@ -1,3 +1,7 @@
+### 6.2.2  (2025-10-13)
+
+-   fix: STRF-13809 Bump node-sass version ([150](https://github.com/bigcommerce/stencil-styles/pull/150))
+
 ### 6.2.1  (2025-10-13)
 
 -   fix: STRF-13809 Bump node-sass version ([148](https://github.com/bigcommerce/stencil-styles/pull/148))
