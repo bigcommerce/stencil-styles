@@ -1,3 +1,7 @@
+### 6.2.1  (2025-10-13)
+
+-   fix: STRF-13809 Bump node-sass version ([148](https://github.com/bigcommerce/stencil-styles/pull/148))
+
 ### 6.2.0  (2025-10-10)
 
 -   feat: STRF-13762 Enable node 22 and node 24 ([146](https://github.com/bigcommerce/stencil-styles/pull/146))
