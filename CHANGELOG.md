@@ -1,6 +1,10 @@
+### 6.2.3  (2025-10-31)
+
+-   fix: use npm registry for node-sass ([150](https://github.com/bigcommerce/stencil-styles/pull/150))
+
 ### 6.2.2  (2025-10-13)
 
--   fix: STRF-13809 Bump node-sass version ([150](https://github.com/bigcommerce/stencil-styles/pull/150))
+-   fix: STRF-13809 Bump node-sass version ([149](https://github.com/bigcommerce/stencil-styles/pull/149))
 
 ### 6.2.1  (2025-10-13)
 
