@@ -2,7 +2,7 @@ const Code = require('@hapi/code');
 const Os = require('os');
 const Lab = require('@hapi/lab');
 const sinon = require('sinon');
-const nodeSass = require('node-sass');
+const nodeSass = require('@bigcommerce/node-sass');
 const ScssCompiler = require("../lib/ScssCompiler");
 const themeSettingsMock = require('./mocks/settings.json');
 
