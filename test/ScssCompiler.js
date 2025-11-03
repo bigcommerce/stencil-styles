@@ -116,11 +116,22 @@ describe('ScssCompiler', () => {
         });
 
         it('should return the compiled css from the primary engine when it finishes successfully', async () => {
-            const scssCompiler = createScssCompiler()
+            const scssCompiler = new ScssCompiler(console);
+            scssCompiler.activateNodeSassEngine();
+            const files = {
+                'theme.scss': '@import "tools/tools";\n@import "tools/onemore";\n\nh1 {\n    color: #0000AA;\n}\n\n$font: "Arial";',
+                'tools/tools.scss': '.tools {\n    color: red;\n}',
+                'tools/onemore.scss': '.underscore {\n    color: green;\n}',
+            };
+            const result = await scssCompiler.compile({
+                data: files['theme.scss'],
+                files,
+                dest: `/assets/css/theme.scss`,
+                themeSettings:  { ...themeSettingsMock },
+                autoprefixerOptions: {},
+            });
 
-            const result = await scssCompiler.compile(getOptionsMock());
-
-            expect(result).to.equal(getRenderResultMock().css);
+            expect(result).to.equal(".tools {\n  color: red; }\n\n.underscore {\n  color: green; }\n\nh1 {\n  color: #0000AA; }\n");
         });
     });
 
