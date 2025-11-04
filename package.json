@@ -1,6 +1,6 @@
 {
   "name": "@bigcommerce/stencil-styles",
-  "version": "6.2.4",
+  "version": "6.2.5",
   "description": "Compiles SCSS for the Stencil Framework",
   "main": "lib/index.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "lib/"
   ],
   "dependencies": {
-    "@bigcommerce/node-sass": "10.0.1",
+    "@bigcommerce/node-sass": "10.0.2",
     "async": "^3.2.6",
     "autoprefixer": "^10.4.20",
     "cheerio": "^1.0.0-rc.12",
