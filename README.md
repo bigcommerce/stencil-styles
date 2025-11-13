@@ -1,4 +1,5 @@
 # Stencil Styles
+
 ## Compiles SCSS On-The-Fly for the Stencil Framework
 
 ### Usage
