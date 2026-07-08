@@ -1,0 +1,11 @@
+// Helper function for use with stencilBoolean(...);
+
+/**
+ * Simple casting macro for resolving a true value to 1 and a false value to 0.
+ */
+@function castSASSBooleanForCSS1And0($isSassTruthy) {
+    @if $isSassTruthy {
+        @return 1;
+    }
+    @return 0;
+}

@@ -15,6 +15,18 @@
       "font-size": {
         "value": 16
       }
-    }
-  }
+    },
+    "truthy-literal": true,
+    "truthy-string": "true",
+    "truthy-number": 1,
+    "falsey-literal": false,
+    "falsey-string": "",
+    "falsy-number": 0
+  },
+  "truthy-literal": true,
+  "truthy-string": "true",
+  "truthy-number": 1,
+  "falsey-literal": false,
+  "falsey-string": "",
+  "falsy-number": 0
 }

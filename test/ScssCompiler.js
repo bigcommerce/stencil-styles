@@ -143,6 +143,7 @@ describe('ScssCompiler', () => {
 
             expect(result).to.be.an.object();
             expect(Object.keys(result)).to.contain([
+                'stencilBoolean($name)',
                 'stencilNumber($name, $unit: px)',
                 'stencilColor($name)',
                 'stencilString($name)',
@@ -150,6 +151,71 @@ describe('ScssCompiler', () => {
                 'stencilFontFamily($name)',
                 'stencilFontWeight($name)',
             ]);
+        });
+
+        describe('stencilBoolean', () => {
+            let stencilBoolean;
+            let saasTypes;
+
+            beforeEach(() => {
+                const scssCompiler = createScssCompiler()
+                stencilBoolean = scssCompiler.getScssFunctions(themeSettingsMock)['stencilBoolean($name)'];
+                saasTypes = scssCompiler.engine.types;
+            });
+
+            it('should return the expected for flat key', () => {
+                const settingName = {
+                    "truthy-literal": new saasTypes.String("truthy-literal"),
+                    "truthy-string": new saasTypes.String("truthy-string"),
+                    "truthy-number": new saasTypes.String("truthy-number"),
+                    "falsey-literal": new saasTypes.String("falsey-literal"),
+                    "falsey-string": new saasTypes.String("falsey-string"),
+                    "falsy-number": new saasTypes.String("falsy-number"),
+                };
+
+                expect(stencilBoolean(settingName["truthy-literal"]).getValue()).to.equal(true);
+                expect(stencilBoolean(settingName["truthy-string"]).getValue()).to.equal(true);
+                expect(stencilBoolean(settingName["truthy-number"]).getValue()).to.equal(true);
+                expect(stencilBoolean(settingName["falsey-literal"]).getValue()).to.equal(false);
+                expect(stencilBoolean(settingName["falsey-string"]).getValue()).to.equal(false);
+                expect(stencilBoolean(settingName["falsy-number"]).getValue()).to.equal(false);
+            });
+
+            it('should return the expected for nested key', () => {
+                const settingName = {
+                    "global.truthy-literal": new saasTypes.String("global.truthy-literal"),
+                    "global.truthy-string": new saasTypes.String("global.truthy-string"),
+                    "global.truthy-number": new saasTypes.String("global.truthy-number"),
+                    "global.falsey-literal": new saasTypes.String("global.falsey-literal"),
+                    "global.falsey-string": new saasTypes.String("global.falsey-string"),
+                    "global.falsy-number": new saasTypes.String("global.falsy-number"),
+                };
+
+                expect(stencilBoolean(settingName["global.truthy-literal"]).getValue()).to.equal(true);
+                expect(stencilBoolean(settingName["global.truthy-string"]).getValue()).to.equal(true);
+                expect(stencilBoolean(settingName["global.truthy-number"]).getValue()).to.equal(true);
+                expect(stencilBoolean(settingName["global.falsey-literal"]).getValue()).to.equal(false);
+                expect(stencilBoolean(settingName["global.falsey-string"]).getValue()).to.equal(false);
+                expect(stencilBoolean(settingName["global.falsy-number"]).getValue()).to.equal(false);
+            });
+
+            it('should return false if passed a wrong setting name', () => {
+                const settingName = {
+                    "bad-value": new saasTypes.String("bad-value"),
+                };
+
+                expect(stencilBoolean(settingName["bad-value"]).getValue()).to.equal(false);
+            });
+
+            it('should return a Sass.types.Boolean', () => {
+                const settingName = {
+                    "truthy-literal": new saasTypes.String("truthy-literal"),
+                    "falsey-literal": new saasTypes.String("falsey-literal"),
+                }
+
+                expect(stencilBoolean(settingName["truthy-literal"]) instanceof saasTypes.Boolean).to.equal(true);
+                expect(stencilBoolean(settingName["falsey-literal"]) instanceof saasTypes.Boolean).to.equal(true);
+            });
         });
 
         describe('stencilNumber', () => {
