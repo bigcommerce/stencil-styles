@@ -5,6 +5,7 @@ const path = require('path');
 const process = require('process');
 const StencilStyles = require('../lib/styles');
 const ScssCompiler = require('../lib/ScssCompiler');
+const TailwindCompiler = require('../lib/TailwindCompiler');
 
 const lab = exports.lab = Lab.script();
 const afterEach = lab.afterEach;
@@ -46,9 +47,11 @@ describe('StencilStyles Plugin', () => {
         it('should use default compilers if they weren\'t passed through constructor', () => {
             const stencilStyles = new StencilStyles(loggerMock);
 
-            expect([...Object.keys(stencilStyles.compilers)]).to.be.equal(['scss']);
+            expect([...Object.keys(stencilStyles.compilers)]).to.be.equal(['scss', 'tailwind']);
             expect(stencilStyles.compilers.scss).to.be.instanceOf(ScssCompiler);
             expect(stencilStyles.compilers.scss.logger).to.be.equal(loggerMock);
+            expect(stencilStyles.compilers.tailwind).to.be.instanceOf(TailwindCompiler);
+            expect(stencilStyles.compilers.tailwind.logger).to.be.equal(loggerMock);
         });
     });
 

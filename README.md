@@ -1,6 +1,6 @@
 # Stencil Styles
 
-## Compiles SCSS On-The-Fly for the Stencil Framework
+## Compiles SCSS and Tailwind CSS On-The-Fly for the Stencil Framework
 
 ### Usage
 *This is assuming you are using Glue and have added `stencil-styles` to your manifest file*
@@ -23,6 +23,23 @@ stencilStyles.compile(compiler, {
     // `css` will be the compiled SCSS
 });
 ```
+
+### Tailwind CSS
+
+Themes can also compile a Tailwind (v3) entry stylesheet:
+
+```javascript
+const css = await stencilStyles.compileCss('tailwind', {
+    data: '@tailwind base;\n@tailwind components;\n@tailwind utilities;', // the theme's Tailwind entry
+    themePath: '/path/to/theme', // templates/**/*.html and assets/js/**/*.js are scanned for class names
+    themeSettings: {}, // same flat settings object the scss compiler receives
+});
+```
+
+Theme-authored JavaScript is never executed: the theme's own
+`tailwind.config.js` is ignored, the `@config` directive is rejected, and the
+compile runs against a pipeline-owned config whose only preset is the
+BigCommerce `storefront-kit/tailwind` preset.
 
 #### License
 
